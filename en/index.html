@@ -672,10 +672,10 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
     <div class="scene" id="scene" aria-label="EPRPilot dashboard cards: deadlines, reports and orders around the logo mark" role="img">
       <div class="fallback" id="fallback"><div class="hc" aria-hidden="true">
 <svg class="hc-sig" viewBox="-1.1 -1.1 2.2 2.2"><polygon points="-1,1 .28,.29 1,-1 -.29,-.29" fill="#a8d42b"/><polygon points="-.735,-.735 .215,-.215 .735,.735 -.215,.215" fill="#56513f"/></svg>
-<div class="hc-card hc-dl"><h5>Najbliższe terminy</h5><ul><li class="w">DE · LUCID<b>3 dni</b><i style="--p:88%"></i></li><li>FR · Citeo<b>12 dni</b><i style="--p:60%"></i></li><li>PL · BDO<b>28 dni</b><i style="--p:30%"></i></li></ul></div>
-<div class="hc-card hc-rp"><div class="t">Raport DE · Q3<span>.xml</span></div><div class="hc-bar"><i id="hcBar"></i></div><div class="hc-st" id="hcSt">Liczenie mas opakowań…</div></div>
-<div class="hc-card hc-sy"><h5>Zsynchronizowane zamówienia</h5><div class="n" id="hcN">0</div><small>Amazon · Shopify · Allegro</small><svg viewBox="0 0 200 30" preserveAspectRatio="none"><polyline points="0,26 20,22 40,24 60,16 80,18 100,11 120,14 140,8 160,10 180,4 200,6" fill="none" stroke="#a8d42b" stroke-width="2" stroke-linejoin="round"/></svg></div>
-<div class="hc-card hc-ct"><i></i><b>29 krajów</b><span>stawki aktualne</span></div>
+<div class="hc-card hc-dl"><h5>Upcoming deadlines</h5><ul><li class="w">DE · LUCID<b>3 days</b><i style="--p:88%"></i></li><li>FR · Citeo<b>12 days</b><i style="--p:60%"></i></li><li>PL · BDO<b>28 days</b><i style="--p:30%"></i></li></ul></div>
+<div class="hc-card hc-rp"><div class="t">DE report · Q3<span>.xml</span></div><div class="hc-bar"><i id="hcBar"></i></div><div class="hc-st" id="hcSt">Calculating packaging weights…</div></div>
+<div class="hc-card hc-sy"><h5>Synced orders</h5><div class="n" id="hcN">0</div><small>Amazon · Shopify · Allegro</small><svg viewBox="0 0 200 30" preserveAspectRatio="none"><polyline points="0,26 20,22 40,24 60,16 80,18 100,11 120,14 140,8 160,10 180,4 200,6" fill="none" stroke="#a8d42b" stroke-width="2" stroke-linejoin="round"/></svg></div>
+<div class="hc-card hc-ct"><i></i><b>29 countries</b><span>rates up to date</span></div>
 </div></div>
       <div class="scene-tags" aria-hidden="true">
         <span class="stag" style="left:4%;top:22%"><i></i>DE · Q3 report filed</span>
@@ -1156,12 +1156,12 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
   })();
 
   /* ---------- karty w hero ---------- */
-  (function(){var bar=document.getElementById('hcBar');if(!bar)return;var st=document.getElementById('hcSt'),n=document.getElementById('hcN'),f=new Intl.NumberFormat('pl-PL');
+  (function(){var bar=document.getElementById('hcBar');if(!bar)return;var st=document.getElementById('hcSt'),n=document.getElementById('hcN'),f=new Intl.NumberFormat('en-IE');
     document.getElementById('scene').classList.add('has-hc');
-    function run(){var s0=performance.now();st.classList.remove('ok');st.textContent='Liczenie mas opakowań…';
+    function run(){var s0=performance.now();st.classList.remove('ok');st.textContent='Calculating packaging weights…';
       (function fr(now){var p=Math.min((now-s0)/2600,1);bar.style.width=(p*100)+'%';n.textContent=f.format(Math.round(1284*p));
-        if(p<1)requestAnimationFrame(fr);else{st.classList.add('ok');st.textContent='✓ Gotowy do złożenia'}})(s0)}
-    if(reduce){bar.style.width='100%';n.textContent=f.format(1284);st.classList.add('ok');st.textContent='✓ Gotowy do złożenia';return}
+        if(p<1)requestAnimationFrame(fr);else{st.classList.add('ok');st.textContent='✓ Ready to file'}})(s0)}
+    if(reduce){bar.style.width='100%';n.textContent=f.format(1284);st.classList.add('ok');st.textContent='✓ Ready to file';return}
     run();setInterval(run,6000)})();
   /* ---------- terminal ---------- */
   var L=['<span class="k">$</span> eprpilot sync --all','<span class="ok">✓</span> amazon      <span class="v">1,284</span> orders','<span class="ok">✓</span> shopify     <span class="v">312</span> SKU','<span class="ok">✓</span> mapping     PKG 298 · WEEE 41 · BAT 17','<span class="w">!</span> DE LUCID    Q3 report in <span class="v">3 days</span>','<span class="w">!</span> FR Citeo    declaration in <span class="v">12 days</span>','<span class="k">$</span> eprpilot report --country=DE','<span class="ok">✓</span> verpackung_q3.xml <span class="v">ready</span>','<span class="ok">✓</span> allegro     <span class="v">486</span> orders','<span class="ok">✓</span> baselinker  <span class="v">2,031</span> items','<span class="ok">✓</span> rates       29 countries · <span class="v">up to date</span>','<span class="w">!</span> ES Ecoembes declaration in <span class="v">21 days</span>','<span class="ok">✓</span> BDO         report <span class="v">2025 ready</span>','<span class="k">$</span> eprpilot report --country=FR','<span class="ok">✓</span> citeo_declaration.csv <span class="v">ready</span>','<span class="k">$</span> eprpilot audit --export','<span class="ok">✓</span> archive      <span class="v">148</span> documents · zip'];
