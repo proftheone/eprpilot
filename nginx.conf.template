@@ -4,6 +4,11 @@ server {
     server_name _;
     root /usr/share/nginx/html;
     index index.html;
+    absolute_redirect off;
+
+    # stare adresy z .html i index.html przekierowujemy na czyste (/eudr, /en/)
+    if ($request_uri ~ ^(.*/)index(\.html)?(\?.*)?$) { return 301 $1$3; }
+    if ($request_uri ~ ^(/[^?]+)\.html(\?.*)?$) { return 301 $1$2; }
 
     gzip on;
     gzip_types text/html text/css application/javascript image/svg+xml;

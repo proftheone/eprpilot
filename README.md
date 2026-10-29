@@ -1,6 +1,6 @@
 # eprpilot.com
 
-Statyczna strona EPRPilot (bez builda): otwórz `index.html` w przeglądarce albo wystaw katalog na dowolnym hostingu (np. GitHub Pages).
+Statyczna strona EPRPilot (bez builda), serwowana przez nginx z `Dockerfile`. Linki są czyste i absolutne (`/eudr`, `/en/faq`), więc stronę trzeba oglądać przez serwer, a nie przez otwarcie pliku z dysku. Stare adresy z `.html` i `index.html` przekierowują na czyste.
 
 - `index.html` – strona główna (grafiki osadzone w pliku)
 - `eudr.html` – Pakiet EUDR
