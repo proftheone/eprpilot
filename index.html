@@ -88,37 +88,26 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backgroun
 .scene canvas{display:block;width:100%!important;height:100%!important}
 .scene .fallback{position:absolute;inset:0;display:grid;place-items:center}
 .scene .fallback img{width:440px;max-width:86%;-webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent);mask-image:radial-gradient(closest-side,#000 62%,transparent)}
-.scene .fallback .hc{position:absolute;inset:0}
-.hc-sig{position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%);filter:drop-shadow(0 0 24px rgba(168,212,43,.55));animation:hcsig 6s ease-in-out infinite}
-.scene .fallback .hc-sig{max-width:none;-webkit-mask-image:none;mask-image:none}
-@keyframes hcsig{0%,100%{transform:translate(-50%,-50%) rotate(0deg) scale(1)}50%{transform:translate(-50%,-53%) rotate(8deg) scale(1.04)}}
-.hc-card{position:absolute;background:rgba(31,31,32,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 16px;text-align:left;box-shadow:0 24px 50px -20px rgba(0,0,0,.8);animation:hcfloat 7s ease-in-out infinite}
-.hc-card h5{margin:0 0 10px;font:500 10.5px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
-@keyframes hcfloat{0%,100%{translate:0 0}50%{translate:0 -8px}}
-.hc-dl{left:13%;top:8%;width:230px}
-.hc-dl li{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;font-size:13px;color:var(--fg);margin-bottom:9px;list-style:none}
-.hc-dl ul{margin:0;padding:0}.hc-dl li:last-child{margin-bottom:0}
-.hc-dl li b{font:500 12px var(--f-mono);color:var(--lime)}.hc-dl li.w b{color:var(--orange,#ff8a3d)}
-.hc-dl li i{grid-column:1/-1;height:3px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
-.hc-dl li i::after{content:"";display:block;height:100%;width:var(--p);background:currentColor;color:var(--lime);border-radius:3px}
-.hc-dl li.w i::after{color:#ff8a3d}
-.hc-rp{right:12%;top:14%;width:220px;animation-delay:-2.3s}
-.hc-rp .t{font-size:14px;color:var(--fg);font-weight:500;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-.hc-rp .t span{font:500 10.5px var(--f-mono);color:var(--dim)}
-.hc-bar{height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
-.hc-bar i{display:block;height:100%;width:0;background:var(--lime);box-shadow:0 0 12px var(--lime);border-radius:6px}
-.hc-st{margin-top:9px;font:500 11.5px var(--f-mono);color:var(--muted);display:flex;gap:7px;align-items:center}
-.hc-st.ok{color:var(--lime)}
-.hc-sy{left:17%;bottom:9%;width:210px;animation-delay:-4.1s}
-.hc-sy .n{font-size:28px;font-weight:600;letter-spacing:-.03em;color:var(--fg);line-height:1}
-.hc-sy small{display:block;margin-top:6px;font:400 11px var(--f-mono);color:var(--dim)}
-.hc-sy svg{display:block;width:100%;height:30px;margin-top:8px}
-.hc-ct{right:16%;bottom:13%;padding:10px 14px;display:flex;gap:10px;align-items:center;animation-delay:-1.2s}
-.hc-ct b{font-size:15px;color:var(--fg)}.hc-ct span{font:400 11px var(--f-mono);color:var(--lime)}
-.hc-ct i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(168,212,43,.18)}
-.scene.has-hc .scene-tags{display:none}
-@media (max-width:700px){.hc-sig{width:110px;height:110px}.hc-dl{left:2%;top:4%;width:178px;padding:11px 12px}.hc-dl li{font-size:12px}.hc-rp{right:2%;top:auto;bottom:6%;width:170px;padding:11px 12px}.hc-sy,.hc-ct{display:none}}
-@media (prefers-reduced-motion:reduce){.hc-card,.hc-sig{animation:none}}
+.scene .fallback .pk{position:absolute;inset:0}
+.scene .fallback .pk svg,.scene .fallback .pk img{max-width:none;-webkit-mask-image:none;mask-image:none}
+.pk-b{position:absolute;left:50%;top:50%;width:190px;height:300px;transform:translate(-18%,-50%);filter:drop-shadow(0 30px 40px rgba(0,0,0,.55)) drop-shadow(0 0 40px rgba(168,212,43,.18));animation:pkb 6s ease-in-out infinite}
+@keyframes pkb{0%,100%{translate:0 0;rotate:-3deg}50%{translate:0 -10px;rotate:2deg}}
+.pk-c{position:absolute;background:#f7f8f5;color:#12301f;border-radius:22px;padding:18px 20px;box-shadow:0 26px 50px -18px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.6) inset;text-align:left;animation:pkf 7s ease-in-out infinite}
+@keyframes pkf{0%,100%{translate:0 0}50%{translate:0 -7px}}
+.pk-c h6{margin:0;font:600 15px/1.3 var(--f-sans);letter-spacing:-.01em;color:#12301f}
+.pk-r{left:calc(50% - 250px);top:12%;width:270px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.pk-y{display:inline-flex;gap:8px;align-items:center;margin-top:12px;font:600 12.5px var(--f-sans);color:#12301f;border:1px solid #e3e6e1;background:#fff;border-radius:10px;padding:6px 10px}
+.pk-y svg{width:15px;height:15px;color:#2f9e5a}
+.pk-ring{position:relative;width:88px;height:88px}
+.pk-ring svg{width:88px;height:88px;transform:rotate(-90deg)}
+.pk-ring b{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;font:600 24px var(--f-sans);letter-spacing:-.03em;color:#12301f}
+.pk-ring b small{font-size:11px;margin-left:1px}
+.pk-f{left:calc(50% - 225px);bottom:9%;display:flex;gap:16px;align-items:center;padding:14px 16px 14px 20px;animation-delay:-3s}
+.pk-f h6{max-width:130px}
+.pk-v{display:flex;gap:10px;align-items:center;background:#e9f4f1;border-radius:14px;padding:12px 16px;font:600 17px var(--f-sans);letter-spacing:-.01em;color:#12301f;white-space:nowrap}
+.pk-v svg{width:22px;height:22px;color:#2f9e5a}
+@media (max-width:700px){.scene .fallback .pk{transform:scale(.68);transform-origin:50% 50%;inset:0 -25%}}
+@media (prefers-reduced-motion:reduce){.pk-b,.pk-c{animation:none}}
 .scene-tags{position:absolute;inset:0;pointer-events:none}
 .stag{position:absolute;font:500 11.5px var(--f-mono);color:var(--fg);background:rgba(11,12,14,.75);border:1px solid var(--line-2);border-radius:999px;padding:7px 12px;display:inline-flex;gap:8px;align-items:center;backdrop-filter:blur(6px);animation:bob 6s ease-in-out infinite}
 .stag i{width:6px;height:6px;border-radius:50%;background:var(--lime)}
@@ -669,18 +658,22 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
   <div class="wrap">
     <h1>Ile raportów <strong>EPR</strong> robisz dziś <strong>ręcznie?</strong></h1>
     <p class="lead">Opakowania, WEEE, baterie i PPWR w 27 krajach UE, Wielkiej Brytanii i Turcji. EPRPilot zbiera dane, wylicza obowiązki, pilnuje terminów i generuje raporty za Ciebie.</p>
-    <div class="scene" id="scene" aria-label="Panel EPRPilot: terminy, raporty i zamówienia wokół sygnetu" role="img">
-      <div class="fallback" id="fallback"><div class="hc" aria-hidden="true">
-<svg class="hc-sig" viewBox="-1.1 -1.1 2.2 2.2"><polygon points="-1,1 .28,.29 1,-1 -.29,-.29" fill="#a8d42b"/><polygon points="-.735,-.735 .215,-.215 .735,.735 -.215,.215" fill="#56513f"/></svg>
-<div class="hc-card hc-dl"><h5>Najbliższe terminy</h5><ul><li class="w">DE · LUCID<b>3 dni</b><i style="--p:88%"></i></li><li>FR · Citeo<b>12 dni</b><i style="--p:60%"></i></li><li>PL · BDO<b>28 dni</b><i style="--p:30%"></i></li></ul></div>
-<div class="hc-card hc-rp"><div class="t">Raport DE · Q3<span>.xml</span></div><div class="hc-bar"><i id="hcBar"></i></div><div class="hc-st" id="hcSt">Liczenie mas opakowań…</div></div>
-<div class="hc-card hc-sy"><h5>Zsynchronizowane zamówienia</h5><div class="n" id="hcN">0</div><small>Amazon · Shopify · Allegro</small><svg viewBox="0 0 200 30" preserveAspectRatio="none"><polyline points="0,26 20,22 40,24 60,16 80,18 100,11 120,14 140,8 160,10 180,4 200,6" fill="none" stroke="#a8d42b" stroke-width="2" stroke-linejoin="round"/></svg></div>
-<div class="hc-card hc-ct"><i></i><b>29 krajów</b><span>stawki aktualne</span></div>
-</div></div>
+    <div class="scene" id="scene" aria-label="Butelka z kartami poziomu recyklingu i opłaty EPR, otoczona punktami krajów" role="img">
+      <div class="fallback" id="fallback"><div class="pk" role="img" aria-label="Butelka z kartami: poziom recyklingu 78% i opłata EPR"><svg class="pk-b" viewBox="0 0 200 320"><defs><linearGradient id="pkg" x1="0" x2="1"><stop offset="0" stop-color="#cfe6de"/><stop offset=".45" stop-color="#eaf5f1"/><stop offset="1" stop-color="#a9cbbf"/></linearGradient><linearGradient id="pkp" x1="0" x2="1"><stop offset="0" stop-color="#e8eeec"/><stop offset=".5" stop-color="#ffffff"/><stop offset="1" stop-color="#c9d4d0"/></linearGradient></defs>
+<path d="M98 22h70a8 8 0 0 1 0 16h-56" fill="none" stroke="url(#pkp)" stroke-width="12" stroke-linecap="round"/><rect x="86" y="26" width="28" height="46" rx="4" fill="url(#pkp)"/>
+<rect x="68" y="66" width="64" height="34" rx="8" fill="url(#pkp)" stroke="#c3cdc9"/><path d="M76 74v18M86 74v18M96 74v18M106 74v18M116 74v18M126 74v18" stroke="#d3dcd8" stroke-width="2"/>
+<path d="M62 100h76c20 4 34 20 34 44v134c0 18-14 34-34 34H62c-20 0-34-16-34-34V144c0-24 14-40 34-44z" fill="url(#pkg)"/>
+<path d="M44 150c0-20 8-32 22-38v178c-14-6-22-14-22-30z" fill="#fff" opacity=".45"/>
+<rect x="52" y="176" width="96" height="78" rx="14" fill="#fff" opacity=".82"/>
+<g transform="translate(100 205) scale(18)"><polygon points="-1,1 .28,.29 1,-1 -.29,-.29" fill="#a8d42b"/><polygon points="-.735,-.735 .215,-.215 .735,.735 -.215,.215" fill="#56513f"/></g>
+<text x="100" y="244" text-anchor="middle" font-family="Geist,system-ui,sans-serif" font-weight="600" font-size="11" fill="#12301f" letter-spacing=".5">eprpilot</text></svg>
+<div class="pk-c pk-r"><div><h6>Poziom recyklingu</h6><span class="pk-y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>2025<svg viewBox="0 0 24 24" fill="none" stroke="#12301f" stroke-width="2.4" style="width:11px;height:11px"><path d="m6 9 6 6 6-6"/></svg></span></div>
+<div class="pk-ring"><svg viewBox="0 0 88 88"><circle cx="44" cy="44" r="37" fill="none" stroke="#e7e9e5" stroke-width="8"/><circle id="pkRing" cx="44" cy="44" r="37" fill="none" stroke="#22b463" stroke-width="8" stroke-linecap="round" stroke-dasharray="232.5" stroke-dashoffset="232.5"/></svg><b><span id="pkPct">0</span><small>%</small></b></div></div>
+<div class="pk-c pk-f"><h6>Opłata EPR · DE</h6><div class="pk-v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/><path d="M3 9h14a4 4 0 0 1 4 4"/></svg><span id="pkFee">0,00 €</span></div></div></div></div>
       <div class="scene-tags" aria-hidden="true">
-        <span class="stag" style="left:4%;top:22%"><i></i>DE · raport Q3 złożony</span>
+        <span class="stag" style="left:0;top:31%"><i></i>DE · raport Q3 złożony</span>
         <span class="stag w" style="right:3%;top:16%;animation-delay:1.2s"><i></i>FR · Citeo za 12 dni</span>
-        <span class="stag" style="left:9%;bottom:18%;animation-delay:2.4s"><i></i>sync · 1 284 zamówień</span>
+        <span class="stag" style="left:0;bottom:7%;animation-delay:2.4s"><i></i>sync · 1 284 zamówień</span>
         <span class="stag" style="right:7%;bottom:24%;animation-delay:3.4s"><i></i>PPWR · 298 SKU</span>
         <span class="stag" style="left:0;top:49%;animation-delay:.6s"><i></i>EUDR · due diligence</span>
         <span class="stag w" style="right:0;top:51%;animation-delay:1.8s"><i></i>BDO · sprawozdanie roczne</span>
@@ -1155,14 +1148,13 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
     requestAnimationFrame(frame);
   })();
 
-  /* ---------- karty w hero ---------- */
-  (function(){var bar=document.getElementById('hcBar');if(!bar)return;var st=document.getElementById('hcSt'),n=document.getElementById('hcN'),f=new Intl.NumberFormat('pl-PL');
-    document.getElementById('scene').classList.add('has-hc');
-    function run(){var s0=performance.now();st.classList.remove('ok');st.textContent='Liczenie mas opakowań…';
-      (function fr(now){var p=Math.min((now-s0)/2600,1);bar.style.width=(p*100)+'%';n.textContent=f.format(Math.round(1284*p));
-        if(p<1)requestAnimationFrame(fr);else{st.classList.add('ok');st.textContent='✓ Gotowy do złożenia'}})(s0)}
-    if(reduce){bar.style.width='100%';n.textContent=f.format(1284);st.classList.add('ok');st.textContent='✓ Gotowy do złożenia';return}
-    run();setInterval(run,6000)})();
+  /* ---------- butelka i karty w hero ---------- */
+  (function(){var ring=document.getElementById('pkRing');if(!ring)return;var pct=document.getElementById('pkPct'),fee=document.getElementById('pkFee'),
+    f=new Intl.NumberFormat('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2}),C=232.5;
+    function set(p){ring.style.strokeDashoffset=C*(1-.78*p);pct.textContent=Math.round(78*p);fee.textContent=f.format(1080*p)+' €'}
+    if(reduce){set(1);return}
+    function run(){var s0=performance.now();(function fr(n){var p=Math.min((n-s0)/1800,1);p=1-Math.pow(1-p,3);set(p);if(p<1)requestAnimationFrame(fr)})(s0)}
+    run();setInterval(run,7000)})();
   /* ---------- terminal ---------- */
   var L=['<span class="k">$</span> eprpilot sync --all','<span class="ok">✓</span> amazon      <span class="v">1 284</span> zamówień','<span class="ok">✓</span> shopify     <span class="v">312</span> SKU','<span class="ok">✓</span> mapowanie   PKG 298 · WEEE 41 · BAT 17','<span class="w">!</span> DE LUCID    raport Q3 za <span class="v">3 dni</span>','<span class="w">!</span> FR Citeo    deklaracja za <span class="v">12 dni</span>','<span class="k">$</span> eprpilot report --country=DE','<span class="ok">✓</span> verpackung_q3.xml <span class="v">gotowy</span>','<span class="ok">✓</span> allegro     <span class="v">486</span> zamówień','<span class="ok">✓</span> baselinker  <span class="v">2 031</span> pozycji','<span class="ok">✓</span> stawki      29 krajów · <span class="v">aktualne</span>','<span class="w">!</span> ES Ecoembes deklaracja za <span class="v">21 dni</span>','<span class="ok">✓</span> BDO         sprawozdanie <span class="v">2025 gotowe</span>','<span class="k">$</span> eprpilot report --country=FR','<span class="ok">✓</span> citeo_declaration.csv <span class="v">gotowy</span>','<span class="k">$</span> eprpilot audit --export','<span class="ok">✓</span> archiwum     <span class="v">148</span> dokumentów · zip'];
   var cons=document.getElementById('cons');
