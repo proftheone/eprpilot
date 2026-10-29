@@ -17,5 +17,10 @@ server {
         add_header Cache-Control "public";
     }
 
-    error_page 404 /index.html;
+    # nieistniejący adres: przekierowanie na stronę główną (nie podajemy index.html pod złą ścieżką,
+    # bo wtedy względne linki typu en/index.html zaczynają się zagnieżdżać: /en/en/en/...)
+    error_page 404 = @home;
+    location @home {
+        return 302 /;
+    }
 }
