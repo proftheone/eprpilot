@@ -84,7 +84,7 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backgroun
 @keyframes pulse{50%{opacity:.35}}
 .hero h1{font-size:clamp(41px,6.08vw,82px);margin:0 auto;max-width:15ch;color:var(--muted)}
 .hero .lead{font-size:clamp(16px,1.4vw,18.5px);color:var(--muted);max-width:38em;margin:22px auto 0}
-.scene{position:relative;height:440px;margin:6px auto -10px;max-width:900px}
+.scene{position:relative;height:405px;margin:6px auto -10px;max-width:900px}
 .scene canvas{display:block;width:100%!important;height:100%!important}
 .scene .fallback{position:absolute;inset:0;display:grid;place-items:center}
 .scene .fallback img{width:440px;max-width:86%;-webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent);mask-image:radial-gradient(closest-side,#000 62%,transparent)}
@@ -602,7 +602,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
 @media (max-width:640px){
   section.s{padding-block:80px}
   .hero{padding-block:44px 24px}
-  .scene{height:320px}
+  .scene{height:294px}
   .stag{display:none}
   .team,.plans,.vs,.paths,.f .two{grid-template-columns:1fr}
   .stats4{grid-template-columns:1fr}
@@ -1141,7 +1141,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
     var dust=new THREE.Points(pg,new THREE.PointsMaterial({color:LIME,size:.025,transparent:true,opacity:.5}));scene.add(dust);
     var mx=0,my=0;
     host.addEventListener('pointermove',function(e){var b=host.getBoundingClientRect();mx=(e.clientX-b.left)/b.width-.5;my=(e.clientY-b.top)/b.height-.5});
-    function size(){var w=host.clientWidth,h=host.clientHeight;r.setSize(w,h,false);cam.aspect=w/h;cam.position.z=w<600?11:9;cam.updateProjectionMatrix()}
+    function size(){var w=host.clientWidth,h=host.clientHeight;r.setSize(w,h,false);cam.aspect=w/h;cam.position.z=w<600?11.96:9.78;cam.updateProjectionMatrix()}
     size();addEventListener('resize',size);
     var t0=performance.now();
     function frame(now){
