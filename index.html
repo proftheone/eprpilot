@@ -1077,20 +1077,21 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
     host.insertBefore(r.domElement,host.firstChild);
     var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(36,1,.1,100);cam.position.set(0,0.4,9);
     var LIME=0xa8d42b,TEAL=0x1f5a50;
-    scene.add(new THREE.AmbientLight(0xffffff,.35));
+    scene.add(new THREE.AmbientLight(0xffffff,.7));
     var l1=new THREE.PointLight(LIME,2.2,30);l1.position.set(4,4,6);scene.add(l1);
     var l2=new THREE.PointLight(0x6fd6c6,1.2,30);l2.position.set(-5,-2,4);scene.add(l2);
     var g=new THREE.Group();scene.add(g);
     // szklana kostka
     var box=new THREE.BoxGeometry(2.4,2.4,2.4);
-    var glass=new THREE.MeshPhysicalMaterial({color:0x0e1a16,metalness:.1,roughness:.08,transmission:.6,transparent:true,opacity:.55,clearcoat:1,clearcoatRoughness:.05,reflectivity:.9});
-    var cube=new THREE.Mesh(box,glass); // kostka usunięta z hero, zostaje gwiazdka
-    var edges=new THREE.LineSegments(new THREE.EdgesGeometry(box),new THREE.LineBasicMaterial({color:LIME,transparent:true,opacity:.9}));
-    var inner=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.7,1.7,1.7)),new THREE.LineBasicMaterial({color:LIME,transparent:true,opacity:.18}));
+    var glass=new THREE.MeshPhysicalMaterial({color:0x24513e,emissive:0x0f2c19,emissiveIntensity:.45,metalness:.15,roughness:.06,transmission:.4,transparent:true,opacity:.5,clearcoat:1,clearcoatRoughness:.05,reflectivity:.9});
+    var cube=new THREE.Mesh(box,glass);g.add(cube);
+    var edges=new THREE.LineSegments(new THREE.EdgesGeometry(box),new THREE.LineBasicMaterial({color:LIME,transparent:true,opacity:1}));g.add(edges);
+    var edges2=new THREE.LineSegments(new THREE.EdgesGeometry(box),new THREE.LineBasicMaterial({color:LIME,transparent:true,opacity:.45}));edges2.scale.set(1.012,1.012,1.012);g.add(edges2);
+    var inner=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.7,1.7,1.7)),new THREE.LineBasicMaterial({color:LIME,transparent:true,opacity:.45}));g.add(inner);
     // gwiazda z logo
     var sh=new THREE.Shape();sh.moveTo(-.95,-.15);sh.lineTo(.95,-.95);sh.lineTo(.3,.95);sh.lineTo(-.05,.25);sh.closePath();
     var star=new THREE.Mesh(new THREE.ExtrudeGeometry(sh,{depth:.22,bevelEnabled:true,bevelThickness:.04,bevelSize:.04,bevelSegments:2}),new THREE.MeshStandardMaterial({color:LIME,emissive:LIME,emissiveIntensity:.55,metalness:.3,roughness:.3}));
-    star.geometry.center();star.scale.set(1,1,1);g.add(star);
+    star.geometry.center();star.scale.set(.85,.85,.85);g.add(star);
     // pierścień krajów
     var N=29,pts=new THREE.Group();scene.add(pts);
     var dotGeo=new THREE.SphereGeometry(.05,12,12);
