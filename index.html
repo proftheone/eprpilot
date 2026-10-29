@@ -658,8 +658,8 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
   <div class="wrap">
     <h1>Ile raportów <strong>EPR</strong> robisz dziś <strong>ręcznie?</strong></h1>
     <p class="lead">Opakowania, WEEE, baterie i PPWR w 27 krajach UE, Wielkiej Brytanii i Turcji. EPRPilot zbiera dane, wylicza obowiązki, pilnuje terminów i generuje raporty za Ciebie.</p>
-    <div class="scene" id="scene" aria-label="Butelka z kartami poziomu recyklingu i opłaty EPR, otoczona punktami krajów" role="img">
-      <div class="fallback" id="fallback"><div class="pk" role="img" aria-label="Butelka z kartami: poziom recyklingu 78% i opłata EPR"><svg class="pk-b" viewBox="0 0 200 320"><defs><linearGradient id="pkg" x1="0" x2="1"><stop offset="0" stop-color="#cfe6de"/><stop offset=".45" stop-color="#eaf5f1"/><stop offset="1" stop-color="#a9cbbf"/></linearGradient><linearGradient id="pkp" x1="0" x2="1"><stop offset="0" stop-color="#e8eeec"/><stop offset=".5" stop-color="#ffffff"/><stop offset="1" stop-color="#c9d4d0"/></linearGradient></defs>
+    <div class="scene" id="scene" aria-label="Obracająca się siatka planety z podświetlonymi rynkami Europy" role="img">
+      <div class="fallback" id="fallback" style="display:none"><div class="pk" role="img" aria-label="Butelka z kartami: poziom recyklingu 78% i opłata EPR"><svg class="pk-b" viewBox="0 0 200 320"><defs><linearGradient id="pkg" x1="0" x2="1"><stop offset="0" stop-color="#cfe6de"/><stop offset=".45" stop-color="#eaf5f1"/><stop offset="1" stop-color="#a9cbbf"/></linearGradient><linearGradient id="pkp" x1="0" x2="1"><stop offset="0" stop-color="#e8eeec"/><stop offset=".5" stop-color="#ffffff"/><stop offset="1" stop-color="#c9d4d0"/></linearGradient></defs>
 <path d="M98 22h70a8 8 0 0 1 0 16h-56" fill="none" stroke="url(#pkp)" stroke-width="12" stroke-linecap="round"/><rect x="86" y="26" width="28" height="46" rx="4" fill="url(#pkp)"/>
 <rect x="68" y="66" width="64" height="34" rx="8" fill="url(#pkp)" stroke="#c3cdc9"/><path d="M76 74v18M86 74v18M96 74v18M106 74v18M116 74v18M126 74v18" stroke="#d3dcd8" stroke-width="2"/>
 <path d="M62 100h76c20 4 34 20 34 44v134c0 18-14 34-34 34H62c-20 0-34-16-34-34V144c0-24 14-40 34-44z" fill="url(#pkg)"/>
@@ -1110,15 +1110,23 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
     scene.add(new THREE.AmbientLight(0xffffff,.7));
     var l1=new THREE.PointLight(LIME,2.2,30);l1.position.set(4,4,6);scene.add(l1);
     var l2=new THREE.PointLight(0x6fd6c6,1.2,30);l2.position.set(-5,-2,4);scene.add(l2);
-    var g=new THREE.Group(); // w hero statyczna grafika kostki z sygnetem, scena 3D rysuje tylko orbity
-    // sygnet eprpilot: limonkowy i ciemny romb skrzyżowane jak róża wiatrów
-    function rh(P,depth,color,emi){var s=new THREE.Shape();s.moveTo(P[0][0],P[0][1]);for(var q=1;q<P.length;q++)s.lineTo(P[q][0],P[q][1]);s.closePath();
-      var geo=new THREE.ExtrudeGeometry(s,{depth:depth,bevelEnabled:true,bevelThickness:.03,bevelSize:.025,bevelSegments:2});geo.translate(0,0,-depth/2);
-      return new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:color,emissive:emi,emissiveIntensity:.35,metalness:.35,roughness:.35}))}
-    var sig=new THREE.Group();g.add(sig);
-    sig.add(rh([[-1,-1],[.28,-.29],[1,1],[-.29,.29]],.14,LIME,LIME));
-    var dk=rh([[-.735,.735],[.215,.215],[.735,-.735],[-.215,-.215]],.24,0x56513f,0x1a180f);sig.add(dk);
-    sig.scale.set(1.45,1.45,1.45);
+    var g=new THREE.Group();scene.add(g);
+    // siatka planety z podświetlonymi rynkami
+    var R=2.05;function ll(lat,lon,r){var p=(90-lat)*Math.PI/180,q=(lon+180)*Math.PI/180;return new THREE.Vector3(-r*Math.sin(p)*Math.cos(q),r*Math.cos(p),r*Math.sin(p)*Math.sin(q))}
+    var gm=new THREE.LineBasicMaterial({color:LIME,transparent:true,opacity:.22});
+    for(var la=-75;la<=75;la+=15){var lp=[];for(var lo=0;lo<=360;lo+=5)lp.push(ll(la,lo,R));g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(lp),gm))}
+    for(var lo2=0;lo2<360;lo2+=15){var mp=[];for(var la2=-90;la2<=90;la2+=5)mp.push(ll(la2,lo2,R));g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(mp),gm))}
+    var fd=[],FN=900;for(var fi=0;fi<FN;fi++){var y=1-2*(fi+.5)/FN,rr=Math.sqrt(1-y*y),th=fi*2.39996;fd.push(Math.cos(th)*rr*R*1.002,y*R*1.002,Math.sin(th)*rr*R*1.002)}
+    var fg=new THREE.BufferGeometry();fg.setAttribute('position',new THREE.Float32BufferAttribute(fd,3));
+    g.add(new THREE.Points(fg,new THREE.PointsMaterial({color:0x9fd6c2,size:.028,transparent:true,opacity:.45})));
+    g.add(new THREE.Mesh(new THREE.SphereGeometry(R*.985,48,48),new THREE.MeshBasicMaterial({color:0x0d1f17,transparent:true,opacity:.55})));
+    var halo=new THREE.Mesh(new THREE.SphereGeometry(R*1.12,48,48),new THREE.MeshBasicMaterial({color:LIME,transparent:true,opacity:.05,side:THREE.BackSide}));g.add(halo);
+    var mk=[[52.5,13.4],[48.9,2.35],[52.2,21],[40.4,-3.7],[41.9,12.5],[59.3,18.1],[51.5,-.1],[39.9,32.9],[50.1,14.4],[48.2,16.4],[52.4,4.9],[38.7,-9.1],[60.2,24.9],[44.4,26.1]],pulses=[];
+    mk.forEach(function(c,i){var col=i%4===1?0xff8a3d:LIME,p=ll(c[0],c[1],R*1.01);
+      var dot=new THREE.Mesh(new THREE.SphereGeometry(.045,12,12),new THREE.MeshBasicMaterial({color:col}));dot.position.copy(p);g.add(dot);
+      var ring=new THREE.Mesh(new THREE.RingGeometry(.06,.085,32),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.8,side:THREE.DoubleSide}));ring.position.copy(p);ring.lookAt(p.clone().multiplyScalar(2));g.add(ring);pulses.push(ring)});
+    for(var ai=0;ai<6;ai++){var a0=ll(mk[ai][0],mk[ai][1],R),a1=ll(mk[ai+6][0],mk[ai+6][1],R),mid=a0.clone().add(a1).multiplyScalar(.5).normalize().multiplyScalar(R*1.25);
+      g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(new THREE.QuadraticBezierCurve3(a0,mid,a1).getPoints(40)),new THREE.LineBasicMaterial({color:LIME,transparent:true,opacity:.55})))}
     // pierścień krajów
     var N=29,pts=new THREE.Group();scene.add(pts);
     var dotGeo=new THREE.SphereGeometry(.05,12,12);
@@ -1138,8 +1146,8 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
     var t0=performance.now();
     function frame(now){
       var t=(now-t0)/1000;
-      g.rotation.x=Math.sin(t*.5)*.1+my*.35;g.rotation.z=mx*.2;
-      sig.rotation.y=t*.9;
+      g.rotation.y=-2.35+Math.sin(t*.25)*.6+mx*.6;g.rotation.x=.82+my*.25;
+      pulses.forEach(function(p,i){var k=1+((t*.8+i*.37)%1)*.9;p.scale.set(k,k,k);p.material.opacity=.9*(1-((t*.8+i*.37)%1))});
       g.position.y=Math.sin(t*1.2)*.12;
       pts.rotation.y=-t*.12;dust.rotation.y=t*.02;
       r.render(scene,cam);
