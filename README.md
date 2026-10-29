@@ -7,3 +7,7 @@ Statyczna strona EPRPilot (bez builda): otwórz `index.html` w przeglądarce alb
 - `konsultacje.html` – Konsultacja EPR i PPWR
 - `polityka-prywatnosci.html`, `regulamin.html`
 - `img/` – zdjęcia podstron i favicony
+
+## Deploy (Docker)
+
+`Dockerfile` serwuje stronę przez nginx na porcie z zmiennej `PORT` (domyślnie 10000). Lokalnie: `docker build -t eprpilot . && docker run -p 8080:10000 eprpilot`.
