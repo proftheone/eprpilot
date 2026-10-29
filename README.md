@@ -8,7 +8,7 @@ Statyczna strona EPRPilot (bez builda), serwowana przez nginx z `Dockerfile`. Li
 - `faq.html` – baza wiedzy (52 pytania)
 - `en/` – wersja angielska: `index.html`, `eudr.html`, `consulting.html`, `faq.html` (polityka i regulamin tylko po polsku)
 - `polityka-prywatnosci.html`, `regulamin.html`
-- `img/` – zdjęcia podstron i favicony
+- `img/` – zdjęcia podstron, ekrany aplikacji do laptopa w hero (`img/slider/`) i favicony
 
 ## Deploy (Docker)
 
