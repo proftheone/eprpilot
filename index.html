@@ -90,10 +90,10 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backgroun
 .scene .fallback img{width:440px;max-width:86%;-webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent);mask-image:radial-gradient(closest-side,#000 62%,transparent)}
 .scene .fallback .lap{width:min(380px,74%);position:relative;filter:drop-shadow(0 26px 40px rgba(0,0,0,.6))}
 .scene .fallback .lap img{width:100%;max-width:none;-webkit-mask-image:none;mask-image:none}
-.lap-scr{position:relative;aspect-ratio:16/10.6;border:8px solid #e9ebee;border-bottom-width:10px;border-radius:14px 14px 6px 6px;background:#e9ebee;overflow:hidden;box-shadow:0 0 0 1px #c9ccd1,inset 0 0 0 1px #d5d8dc,0 0 90px -12px rgba(168,212,43,.4)}
-.lap-bar{height:20px;background:#f3f4f6;border-bottom:1px solid #e1e3e6;display:flex;align-items:center;gap:5px;padding:0 10px}
-.lap-bar i{width:7px;height:7px;border-radius:50%;background:#cfd2d6}.lap-bar i:first-child{background:#ff8a3d}
-.lap-bar span{margin:0 auto;font:500 10px var(--f-mono);color:#6b7076;background:#fff;border:1px solid #e1e3e6;padding:1px 14px;border-radius:6px;transform:translateX(-14px)}
+.lap-scr{position:relative;aspect-ratio:16/10.6;border:8px solid #0c0d0e;border-bottom-width:10px;border-radius:14px 14px 6px 6px;background:#0c0d0e;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 90px -12px rgba(168,212,43,.45)}
+.lap-bar{height:20px;background:#1a1b1c;display:flex;align-items:center;gap:5px;padding:0 10px}
+.lap-bar i{width:7px;height:7px;border-radius:50%;background:#3a3b3d}.lap-bar i:first-child{background:#ff8a3d}
+.lap-bar span{margin:0 auto;font:500 10px var(--f-mono);color:var(--dim);background:#0f1011;padding:2px 14px;border-radius:6px;transform:translateX(-14px)}
 .lap-view{position:absolute;inset:20px 0 0;background:#fff;overflow:hidden}
 .lap-view img{position:absolute;inset:0;height:100%!important;object-fit:cover;object-position:top left;opacity:0;transform:scale(1.05);transform-origin:0 0;transition:opacity .9s ease,transform 4.5s ease-out}
 .lap-view img.on{opacity:1;transform:scale(1)}
@@ -103,8 +103,8 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backgroun
 .lap-cur::after{content:"";position:absolute;left:-9px;top:-9px;width:18px;height:18px;border-radius:50%;background:rgba(168,212,43,.55);transform:scale(0);opacity:0}
 .lap-cur.click::after{animation:lapclick .5s ease-out}
 @keyframes lapclick{0%{transform:scale(0);opacity:1}100%{transform:scale(2.2);opacity:0}}
-.lap-base{position:relative;height:12px;margin:0 -8%;background:linear-gradient(#f4f5f7,#c3c7cc 70%,#a9adb3);border-radius:2px 2px 14px 14px;box-shadow:0 1px 0 rgba(255,255,255,.3) inset}
-.lap-base::before{content:"";position:absolute;left:50%;top:0;width:16%;height:5px;transform:translateX(-50%);background:#b5b9bf;border-radius:0 0 8px 8px}
+.lap-base{position:relative;height:12px;margin:0 -8%;background:linear-gradient(#333436,#151617);border-radius:2px 2px 14px 14px;box-shadow:0 1px 0 rgba(255,255,255,.08) inset}
+.lap-base::before{content:"";position:absolute;left:50%;top:0;width:16%;height:5px;transform:translateX(-50%);background:#0d0e0f;border-radius:0 0 8px 8px}
 @media (prefers-reduced-motion:reduce){.lap-view img,.lap-cur,.lap-prog.run{transition:none}}
 .scene-tags{position:absolute;inset:0;pointer-events:none}
 .stag{position:absolute;font:500 11.5px var(--f-mono);color:var(--fg);background:rgba(11,12,14,.75);border:1px solid var(--line-2);border-radius:999px;padding:7px 12px;display:inline-flex;gap:8px;align-items:center;backdrop-filter:blur(6px);animation:bob 6s ease-in-out infinite}
