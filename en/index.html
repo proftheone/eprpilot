@@ -1133,6 +1133,10 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
     for(var i=0;i<N;i++){var a=i/N*Math.PI*2;var m=new THREE.Mesh(dotGeo,new THREE.MeshBasicMaterial({color:i%7===3?0xf0b44c:LIME}));m.position.set(Math.cos(a)*3.4,Math.sin(a*3)*.25,Math.sin(a)*3.4);pts.add(m)}
     var ring=new THREE.Mesh(new THREE.TorusGeometry(3.4,.006,8,180),new THREE.MeshBasicMaterial({color:LIME,transparent:true,opacity:.35}));ring.rotation.x=Math.PI/2;pts.add(ring);
     var ring2=new THREE.Mesh(new THREE.TorusGeometry(4.3,.004,8,180),new THREE.MeshBasicMaterial({color:0x6fd6c6,transparent:true,opacity:.18}));ring2.rotation.x=Math.PI/2.4;scene.add(ring2);
+    // trzecia orbita, pochylona w drugą stronę, z kropkami
+    var orb3=new THREE.Group();orb3.rotation.set(Math.PI/2.9,0,-.55);scene.add(orb3);
+    orb3.add(new THREE.Mesh(new THREE.TorusGeometry(2.85,.005,8,180),new THREE.MeshBasicMaterial({color:0x6fd6c6,transparent:true,opacity:.4})));
+    for(var o3=0;o3<14;o3++){var a3=o3/14*Math.PI*2,m3=new THREE.Mesh(new THREE.SphereGeometry(o3%5===0?.055:.035,10,10),new THREE.MeshBasicMaterial({color:o3%5===0?0xf0b44c:0x6fd6c6}));m3.position.set(Math.cos(a3)*2.85,Math.sin(a3)*2.85,0);orb3.add(m3)}
     pts.rotation.x=.32;
     // pył
     var pg=new THREE.BufferGeometry(),pc=400,pa=new Float32Array(pc*3);
@@ -1149,7 +1153,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
       g.rotation.y=-2.35+Math.sin(t*.25)*.6+mx*.6;g.rotation.x=.82+my*.25;
       pulses.forEach(function(p,i){var k=1+((t*.8+i*.37)%1)*.9;p.scale.set(k,k,k);p.material.opacity=.9*(1-((t*.8+i*.37)%1))});
       g.position.y=Math.sin(t*1.2)*.12;
-      pts.rotation.y=-t*.12;dust.rotation.y=t*.02;
+      pts.rotation.y=-t*.12;orb3.rotation.z=-.55+t*.16;dust.rotation.y=t*.02;
       r.render(scene,cam);
       if(!reduce)requestAnimationFrame(frame);
     }
