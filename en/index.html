@@ -88,24 +88,37 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backgroun
 .scene canvas{display:block;width:100%!important;height:100%!important}
 .scene .fallback{position:absolute;inset:0;display:grid;place-items:center}
 .scene .fallback img{width:440px;max-width:86%;-webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent);mask-image:radial-gradient(closest-side,#000 62%,transparent)}
-.scene .fallback .lap{width:min(380px,74%);position:relative;filter:drop-shadow(0 26px 40px rgba(0,0,0,.6))}
-.scene .fallback .lap img{width:100%;max-width:none;-webkit-mask-image:none;mask-image:none}
-.lap-scr{position:relative;aspect-ratio:16/10.6;border:8px solid #0c0d0e;border-bottom-width:10px;border-radius:14px 14px 6px 6px;background:#0c0d0e;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 90px -12px rgba(168,212,43,.45)}
-.lap-bar{height:20px;background:#1a1b1c;display:flex;align-items:center;gap:5px;padding:0 10px}
-.lap-bar i{width:7px;height:7px;border-radius:50%;background:#3a3b3d}.lap-bar i:first-child{background:#ff8a3d}
-.lap-bar span{margin:0 auto;font:500 10px var(--f-mono);color:var(--dim);background:#0f1011;padding:2px 14px;border-radius:6px;transform:translateX(-14px)}
-.lap-view{position:absolute;inset:20px 0 0;background:#fff;overflow:hidden}
-.lap-view img{position:absolute;inset:0;height:100%!important;object-fit:cover;object-position:top left;opacity:0;transform:scale(1.05);transform-origin:0 0;transition:opacity .9s ease,transform 4.5s ease-out}
-.lap-view img.on{opacity:1;transform:scale(1)}
-.lap-prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--lime);box-shadow:0 0 10px var(--lime)}
-.lap-prog.run{width:100%;transition:width 3.4s linear}
-.lap-cur{position:absolute;left:30%;top:40%;width:16px;height:20px;transition:left 1.1s cubic-bezier(.5,0,.2,1),top 1.1s cubic-bezier(.5,0,.2,1);pointer-events:none;z-index:2}
-.lap-cur::after{content:"";position:absolute;left:-9px;top:-9px;width:18px;height:18px;border-radius:50%;background:rgba(168,212,43,.55);transform:scale(0);opacity:0}
-.lap-cur.click::after{animation:lapclick .5s ease-out}
-@keyframes lapclick{0%{transform:scale(0);opacity:1}100%{transform:scale(2.2);opacity:0}}
-.lap-base{position:relative;height:12px;margin:0 -8%;background:linear-gradient(#333436,#151617);border-radius:2px 2px 14px 14px;box-shadow:0 1px 0 rgba(255,255,255,.08) inset}
-.lap-base::before{content:"";position:absolute;left:50%;top:0;width:16%;height:5px;transform:translateX(-50%);background:#0d0e0f;border-radius:0 0 8px 8px}
-@media (prefers-reduced-motion:reduce){.lap-view img,.lap-cur,.lap-prog.run{transition:none}}
+.scene .fallback .hc{position:absolute;inset:0}
+.hc-sig{position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%);filter:drop-shadow(0 0 24px rgba(168,212,43,.55));animation:hcsig 6s ease-in-out infinite}
+.scene .fallback .hc-sig{max-width:none;-webkit-mask-image:none;mask-image:none}
+@keyframes hcsig{0%,100%{transform:translate(-50%,-50%) rotate(0deg) scale(1)}50%{transform:translate(-50%,-53%) rotate(8deg) scale(1.04)}}
+.hc-card{position:absolute;background:rgba(31,31,32,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 16px;text-align:left;box-shadow:0 24px 50px -20px rgba(0,0,0,.8);animation:hcfloat 7s ease-in-out infinite}
+.hc-card h5{margin:0 0 10px;font:500 10.5px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+@keyframes hcfloat{0%,100%{translate:0 0}50%{translate:0 -8px}}
+.hc-dl{left:13%;top:8%;width:230px}
+.hc-dl li{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;font-size:13px;color:var(--fg);margin-bottom:9px;list-style:none}
+.hc-dl ul{margin:0;padding:0}.hc-dl li:last-child{margin-bottom:0}
+.hc-dl li b{font:500 12px var(--f-mono);color:var(--lime)}.hc-dl li.w b{color:var(--orange,#ff8a3d)}
+.hc-dl li i{grid-column:1/-1;height:3px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.hc-dl li i::after{content:"";display:block;height:100%;width:var(--p);background:currentColor;color:var(--lime);border-radius:3px}
+.hc-dl li.w i::after{color:#ff8a3d}
+.hc-rp{right:12%;top:14%;width:220px;animation-delay:-2.3s}
+.hc-rp .t{font-size:14px;color:var(--fg);font-weight:500;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.hc-rp .t span{font:500 10.5px var(--f-mono);color:var(--dim)}
+.hc-bar{height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
+.hc-bar i{display:block;height:100%;width:0;background:var(--lime);box-shadow:0 0 12px var(--lime);border-radius:6px}
+.hc-st{margin-top:9px;font:500 11.5px var(--f-mono);color:var(--muted);display:flex;gap:7px;align-items:center}
+.hc-st.ok{color:var(--lime)}
+.hc-sy{left:17%;bottom:9%;width:210px;animation-delay:-4.1s}
+.hc-sy .n{font-size:28px;font-weight:600;letter-spacing:-.03em;color:var(--fg);line-height:1}
+.hc-sy small{display:block;margin-top:6px;font:400 11px var(--f-mono);color:var(--dim)}
+.hc-sy svg{display:block;width:100%;height:30px;margin-top:8px}
+.hc-ct{right:16%;bottom:13%;padding:10px 14px;display:flex;gap:10px;align-items:center;animation-delay:-1.2s}
+.hc-ct b{font-size:15px;color:var(--fg)}.hc-ct span{font:400 11px var(--f-mono);color:var(--lime)}
+.hc-ct i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(168,212,43,.18)}
+.scene.has-hc .scene-tags{display:none}
+@media (max-width:700px){.hc-sig{width:110px;height:110px}.hc-dl{left:2%;top:4%;width:178px;padding:11px 12px}.hc-dl li{font-size:12px}.hc-rp{right:2%;top:auto;bottom:6%;width:170px;padding:11px 12px}.hc-sy,.hc-ct{display:none}}
+@media (prefers-reduced-motion:reduce){.hc-card,.hc-sig{animation:none}}
 .scene-tags{position:absolute;inset:0;pointer-events:none}
 .stag{position:absolute;font:500 11.5px var(--f-mono);color:var(--fg);background:rgba(11,12,14,.75);border:1px solid var(--line-2);border-radius:999px;padding:7px 12px;display:inline-flex;gap:8px;align-items:center;backdrop-filter:blur(6px);animation:bob 6s ease-in-out infinite}
 .stag i{width:6px;height:6px;border-radius:50%;background:var(--lime)}
@@ -656,8 +669,14 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
   <div class="wrap">
     <h1>How many <strong>EPR</strong> reports do you still do <strong>by hand?</strong></h1>
     <p class="lead">Packaging, WEEE, batteries and PPWR in 27 EU countries, the United Kingdom and Turkey. EPRPilot collects your data, works out your obligations, tracks deadlines and generates reports for you.</p>
-    <div class="scene" id="scene" aria-label="Laptop showing the EPRPilot app, surrounded by country points" role="img">
-      <div class="fallback" id="fallback"><div class="lap" aria-hidden="true"><div class="lap-scr"><div class="lap-bar"><i></i><i></i><i></i><span>app.eprpilot.com</span></div><div class="lap-view" id="lapView"><img class="on" src="/img/slider/s1.jpg" alt=""><img src="/img/slider/s2.jpg" alt="" loading="lazy"><img src="/img/slider/s3.jpg" alt="" loading="lazy"><img src="/img/slider/s4.jpg" alt="" loading="lazy"><img src="/img/slider/s5.jpg" alt="" loading="lazy"><span class="lap-prog" id="lapProg"></span><svg class="lap-cur" id="lapCur" viewBox="0 0 16 20"><path d="M1 1v15l4-4 3 7 3-1.4-3-6.6h6z" fill="#111" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg></div></div><div class="lap-base"></div></div></div>
+    <div class="scene" id="scene" aria-label="EPRPilot dashboard cards: deadlines, reports and orders around the logo mark" role="img">
+      <div class="fallback" id="fallback"><div class="hc" aria-hidden="true">
+<svg class="hc-sig" viewBox="-1.1 -1.1 2.2 2.2"><polygon points="-1,1 .28,.29 1,-1 -.29,-.29" fill="#a8d42b"/><polygon points="-.735,-.735 .215,-.215 .735,.735 -.215,.215" fill="#56513f"/></svg>
+<div class="hc-card hc-dl"><h5>Najbliższe terminy</h5><ul><li class="w">DE · LUCID<b>3 dni</b><i style="--p:88%"></i></li><li>FR · Citeo<b>12 dni</b><i style="--p:60%"></i></li><li>PL · BDO<b>28 dni</b><i style="--p:30%"></i></li></ul></div>
+<div class="hc-card hc-rp"><div class="t">Raport DE · Q3<span>.xml</span></div><div class="hc-bar"><i id="hcBar"></i></div><div class="hc-st" id="hcSt">Liczenie mas opakowań…</div></div>
+<div class="hc-card hc-sy"><h5>Zsynchronizowane zamówienia</h5><div class="n" id="hcN">0</div><small>Amazon · Shopify · Allegro</small><svg viewBox="0 0 200 30" preserveAspectRatio="none"><polyline points="0,26 20,22 40,24 60,16 80,18 100,11 120,14 140,8 160,10 180,4 200,6" fill="none" stroke="#a8d42b" stroke-width="2" stroke-linejoin="round"/></svg></div>
+<div class="hc-card hc-ct"><i></i><b>29 krajów</b><span>stawki aktualne</span></div>
+</div></div>
       <div class="scene-tags" aria-hidden="true">
         <span class="stag" style="left:4%;top:22%"><i></i>DE · Q3 report filed</span>
         <span class="stag w" style="right:3%;top:16%;animation-delay:1.2s"><i></i>FR · Citeo in 12 days</span>
@@ -1136,13 +1155,14 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
     requestAnimationFrame(frame);
   })();
 
-  /* ---------- laptop w hero ---------- */
-  (function(){var v=document.getElementById('lapView');if(!v)return;var im=v.querySelectorAll('img'),cur=document.getElementById('lapCur'),pr=document.getElementById('lapProg'),k=0;
-    var spots=[[18,30],[62,46],[40,70],[78,24],[30,56]];
-    function step(){im[k].classList.remove('on');k=(k+1)%im.length;im[k].classList.add('on');
-      cur.style.left=spots[k][0]+'%';cur.style.top=spots[k][1]+'%';setTimeout(function(){cur.classList.remove('click');void cur.offsetWidth;cur.classList.add('click')},1150);
-      pr.classList.remove('run');void pr.offsetWidth;pr.classList.add('run')}
-    if(reduce)return;pr.classList.add('run');setInterval(step,3500)})();
+  /* ---------- karty w hero ---------- */
+  (function(){var bar=document.getElementById('hcBar');if(!bar)return;var st=document.getElementById('hcSt'),n=document.getElementById('hcN'),f=new Intl.NumberFormat('pl-PL');
+    document.getElementById('scene').classList.add('has-hc');
+    function run(){var s0=performance.now();st.classList.remove('ok');st.textContent='Liczenie mas opakowań…';
+      (function fr(now){var p=Math.min((now-s0)/2600,1);bar.style.width=(p*100)+'%';n.textContent=f.format(Math.round(1284*p));
+        if(p<1)requestAnimationFrame(fr);else{st.classList.add('ok');st.textContent='✓ Gotowy do złożenia'}})(s0)}
+    if(reduce){bar.style.width='100%';n.textContent=f.format(1284);st.classList.add('ok');st.textContent='✓ Gotowy do złożenia';return}
+    run();setInterval(run,6000)})();
   /* ---------- terminal ---------- */
   var L=['<span class="k">$</span> eprpilot sync --all','<span class="ok">✓</span> amazon      <span class="v">1,284</span> orders','<span class="ok">✓</span> shopify     <span class="v">312</span> SKU','<span class="ok">✓</span> mapping     PKG 298 · WEEE 41 · BAT 17','<span class="w">!</span> DE LUCID    Q3 report in <span class="v">3 days</span>','<span class="w">!</span> FR Citeo    declaration in <span class="v">12 days</span>','<span class="k">$</span> eprpilot report --country=DE','<span class="ok">✓</span> verpackung_q3.xml <span class="v">ready</span>','<span class="ok">✓</span> allegro     <span class="v">486</span> orders','<span class="ok">✓</span> baselinker  <span class="v">2,031</span> items','<span class="ok">✓</span> rates       29 countries · <span class="v">up to date</span>','<span class="w">!</span> ES Ecoembes declaration in <span class="v">21 days</span>','<span class="ok">✓</span> BDO         report <span class="v">2025 ready</span>','<span class="k">$</span> eprpilot report --country=FR','<span class="ok">✓</span> citeo_declaration.csv <span class="v">ready</span>','<span class="k">$</span> eprpilot audit --export','<span class="ok">✓</span> archive      <span class="v">148</span> documents · zip'];
   var cons=document.getElementById('cons');
