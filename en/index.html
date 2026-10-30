@@ -643,6 +643,16 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
   .coo-tri.a{right:3%;bottom:120px;width:110px;height:150px}
   .coo-tri.b{right:6%;width:150px;height:170px}
 }
+
+/* pasek regulacji */
+.rg-strip{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:22px;margin-top:20px;padding:22px 26px;border:1px dashed rgba(255,138,61,.35);border-radius:20px;background:rgba(255,138,61,.04);text-decoration:none;color:var(--fg);transition:border-color .2s,background .2s}
+.rg-strip:hover{border-color:rgba(255,138,61,.7);background:rgba(255,138,61,.07)}
+.rg-soon{font:500 11.5px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,138,61,.4);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.rg-t b{display:block;font-size:18px;font-weight:600;margin-bottom:3px}
+.rg-t span{color:var(--muted);font-size:14.5px}
+.rg-go{display:inline-flex;align-items:center;gap:8px;color:var(--lime);font-weight:500;font-size:15px;white-space:nowrap}
+.rg-go svg{width:16px;height:16px}
+@media(max-width:760px){.rg-strip{grid-template-columns:1fr;gap:12px;padding:20px}.rg-soon{justify-self:start}}
 </style>
 <style>.lang{font:500 12px var(--f-mono);letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 9px;text-decoration:none;transition:.2s}.lang:hover{color:var(--lime);border-color:rgba(168,212,43,.45)}</style>
 <link rel="alternate" hreflang="pl" href="https://eprpilot.com/"><link rel="alternate" hreflang="en" href="https://eprpilot.com/en/">
@@ -666,6 +676,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
         <ul class="dd-m"><li><a href="/en/eudr"><b>EUDR package</b><span>ready-made document set · €35 net</span></a></li><li><a href="/en/consulting"><b>EPR and PPWR consultation</b><span>60 min with an expert · €89</span></a></li></ul></li>
       
       <li><a href="#cennik">Pricing</a></li>
+      <li><a href="/en/regulations">Regulations</a></li>
       <li><a href="/en/faq">FAQ</a></li>
     </ul>
     <a class="lang" href="/" hreflang="pl" lang="pl">PL</a>
@@ -840,6 +851,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
         <div class="acts"><a class="btn btn-lime" href="https://app.eprpilot.com/auth/login">Turn on</a><a class="btn btn-glass" href="#cennik">Price →</a></div>
       </article>
     </div>
+    <a class="rg-strip" href="/regulacje"><span class="rg-soon">wkrótce</span><span class="rg-t"><b>Inne regulacje środowiskowe</b><span>CBAM · KOBiZE · system kaucyjny · SUP · rozporządzenie bateryjne · ESPR i paszport produktu · EPR tekstyliów</span></span><span class="rg-go">Wszystkie regulacje <svg><use href="#i-arrow"/></svg></span></a>
   </div>
 </section>
 
