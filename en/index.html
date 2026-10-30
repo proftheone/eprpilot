@@ -11,7 +11,7 @@
 <meta name="description" content="EPRPilot: EPR compliance in 29 countries. Packaging, WEEE, batteries and PPWR in one platform.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Caveat:wght@400&display=swap">
 <style>
 /* Layout: czarna scena, wyśrodkowany hero ze sceną 3D (szklana kostka z gwiazdą z logo),
    nagłówki „szary tekst + biały pogrubiony klucz”, karty strumieni jak karty „pracowników”,
@@ -618,6 +618,31 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
 }
+
+/* baner COO */
+.coo-s{padding-block:40px 120px}
+.coo{position:relative;display:grid;grid-template-columns:1.15fr .85fr;align-items:end;border-radius:28px;background:radial-gradient(120% 140% at 85% 100%,rgba(168,212,43,.13),transparent 55%),linear-gradient(135deg,#232526,#1c1d1e);border:1px solid var(--line);min-height:420px}
+.coo-tx{padding:56px 0 56px 56px;align-self:center;position:relative;z-index:2}
+.coo-tx h2{font-size:clamp(30px,3.6vw,46px);margin:14px 0 26px}
+.coo-q{border-left:2px solid var(--lime);padding-left:22px;margin:0;color:#c9cecc;font-size:16.5px;line-height:1.65;max-width:34em}
+.coo-sig{font:400 30px/1.1 "Caveat",cursive;color:var(--fg);margin:22px 0 0;text-align:right;max-width:560px}
+.coo-sig small{display:block;font:500 11.5px/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.coo-tx .btn{margin-top:30px}
+.coo-ph{position:relative;align-self:stretch;min-height:420px}
+.coo-ph img{position:absolute;bottom:0;left:42%;transform:translateX(-50%);height:calc(100% + 110px);width:auto;max-width:none;z-index:2;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
+.coo-tri{position:absolute;z-index:1}
+.coo-tri.a{right:4%;bottom:150px;width:170px;height:230px;background:linear-gradient(90deg,rgba(201,238,90,.95),rgba(168,212,43,.55));clip-path:polygon(0 0,100% 50%,0 100%)}
+.coo-tri.b{right:9%;bottom:0;width:220px;height:250px;background:linear-gradient(120deg,#ff6a3d,#ffa064);clip-path:polygon(0 0,100% 62%,62% 100%,0 100%)}
+@media(max-width:860px){
+  .coo-s{padding-block:30px 90px}
+  .coo{grid-template-columns:1fr;min-height:0}
+  .coo-tx{padding:32px 22px 8px}
+  .coo-sig{text-align:left;font-size:27px}
+  .coo-ph{min-height:380px;margin-top:40px}
+  .coo-ph img{height:380px;left:40%}
+  .coo-tri.a{right:3%;bottom:120px;width:110px;height:150px}
+  .coo-tri.b{right:6%;width:150px;height:170px}
+}
 </style>
 <style>.lang{font:500 12px var(--f-mono);letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 9px;text-decoration:none;transition:.2s}.lang:hover{color:var(--lime);border-color:rgba(168,212,43,.45)}</style>
 <link rel="alternate" hreflang="pl" href="https://eprpilot.com/"><link rel="alternate" hreflang="en" href="https://eprpilot.com/en/">
@@ -814,6 +839,21 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
         <ul><li>Declarations of conformity</li><li>Compliance status of every SKU</li><li>Obligations under Art. 44 and 45</li></ul>
         <div class="acts"><a class="btn btn-lime" href="https://app.eprpilot.com/auth/login">Turn on</a><a class="btn btn-glass" href="#cennik">Price →</a></div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="s coo-s" id="approach">
+  <div class="wrap">
+    <div class="coo">
+      <div class="coo-tx">
+        <span class="label">our approach</span>
+        <h2>Onboarding, <strong>not just a login</strong></h2>
+        <blockquote class="coo-q">I believe EPR compliance doesn't start with an app account, it starts with clean data. That's why we never leave you with an empty database: we sit down with you over your products and packaging, fill the gaps, and only then switch on the reports.</blockquote>
+        <p class="coo-sig">Mateusz Grzywnowicz<small>COO · EPRPILOT sp. z o.o.</small></p>
+        <a class="btn btn-lime" href="/en/consulting">Book a consultation <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="coo-ph" aria-hidden="true"><span class="coo-tri b"></span><span class="coo-tri a"></span><img src="/img/mateusz-coo.webp" alt="" width="432" height="640" loading="lazy"></div>
     </div>
   </div>
 </section>
