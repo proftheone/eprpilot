@@ -1121,6 +1121,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
         <label class="fc" for="fOk"><input type="checkbox" id="fOk" required><span>Akceptuję <a href="/regulamin" target="_blank">Regulamin</a> i zapoznałem się z <a href="/polityka-prywatnosci" target="_blank">Polityką prywatności</a>.</span></label>
         <p class="fi">Administratorem Twoich danych jest EPRPILOT Sp. z o.o. z siedzibą w Radomiu, ul. Kazimierza Pułaskiego 6/10. Dane z formularza przetwarzamy, żeby odpowiedzieć na wiadomość i przygotować ofertę (art. 6 ust. 1 lit. b i f RODO). Masz prawo dostępu do danych, ich sprostowania, usunięcia i wniesienia sprzeciwu. Szczegóły w <a href="/polityka-prywatnosci" target="_blank">Polityce prywatności</a>.</p>
         <button class="btn btn-lime" type="submit">Wyślij <svg><use href="#i-arrow"/></svg></button>
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
         <p class="msg" id="formMsg" hidden></p>
       </form>
     </div>
@@ -1285,7 +1286,12 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
   form.addEventListener('submit',function(e){e.preventDefault();msg.hidden=false;
     if(!document.getElementById('fName').value.trim()||!/^\S+@\S+\.\S+$/.test(document.getElementById('fMail').value)){msg.style.color='var(--amber)';msg.textContent='Podaj imię i poprawny e-mail.';return}
     if(!document.getElementById('fOk').checked){msg.style.color='var(--amber)';msg.textContent='Zaakceptuj Regulamin i Politykę prywatności.';return}
-    msg.style.color='';msg.textContent='✓ Wersja podglądowa: formularz nie wysyła jeszcze danych.'});
+    var W3F_KEY='d0178fda-c63f-4527-a2bb-f690d520852a';
+    if(!W3F_KEY){msg.style.color='';msg.textContent='✓ Wersja podglądowa: formularz nie jest jeszcze podłączony.';return}
+    var btn=form.querySelector('button[type=submit]');btn.disabled=true;msg.style.color='';msg.textContent='Wysyłam…';
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:W3F_KEY,subject:'Nowe zapytanie ze strony eprpilot.com',from_name:'EPRPilot',name:document.getElementById('fName').value.trim(),email:document.getElementById('fMail').value.trim(),replyto:document.getElementById('fMail').value.trim(),message:document.getElementById('fMsg').value.trim(),page:location.href,botcheck:form.querySelector('[name=botcheck]').checked})})
+      .then(function(r){return r.json()}).then(function(d){if(d.success){form.reset();msg.style.color='var(--lime)';msg.textContent='✓ Dziękujemy! Mamy Twoją wiadomość i odpowiemy w ciągu jednego dnia roboczego.'}else throw 0})
+      .catch(function(){msg.style.color='var(--amber)';msg.textContent='Nie udało się wysłać wiadomości. Napisz na info@eprpilot.com.'}).then(function(){btn.disabled=false})});
 })();
 </script>
 
