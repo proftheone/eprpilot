@@ -777,8 +777,13 @@ details p{margin:0 0 20px;color:var(--muted);max-width:62em}
 .cs-cta{border:1px solid var(--line);border-radius:22px;background:radial-gradient(80% 140% at 100% 0,rgba(168,212,43,.12),transparent 60%),var(--surface);padding:36px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .cs-cta h3{margin:0 0 6px;font-size:24px}.cs-cta p{margin:0;color:var(--muted)}
 .cs-cta .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.cs-img{margin:0;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.cs-img img{display:block;width:100%;height:100%;object-fit:cover}
+.cs-img.wide{margin-top:40px;aspect-ratio:21/9}
+.cs-hero .cs-img.wide{max-width:1100px;margin-left:auto;margin-right:auto}
+.cs-img.side{margin-top:28px;aspect-ratio:4/3}
 .cs-disc{color:var(--dim);font-size:13.5px;margin-top:22px;text-align:center}
-@media(max-width:900px){.cs-meta{grid-template-columns:1fr 1fr}.cs-meta div:nth-child(3){border-left:0}.cs-meta div:nth-child(n+3){border-top:1px solid var(--line)}
+.cs-img.wide{} @media(max-width:900px){.cs-img.wide{aspect-ratio:16/10;margin-top:28px}.cs-meta{grid-template-columns:1fr 1fr}.cs-meta div:nth-child(3){border-left:0}.cs-meta div:nth-child(n+3){border-top:1px solid var(--line)}
 .cs-stats{grid-template-columns:1fr 1fr;gap:12px}.cs-stat{padding:22px 18px}.cs-2{grid-template-columns:1fr;gap:24px}.cs-res{grid-template-columns:1fr}.cs-cta{padding:26px 22px}}
 </style>
 <section class="hero cs-hero"><div class="wrap">
@@ -786,10 +791,11 @@ details p{margin:0 0 20px;color:var(--muted);max-width:62em}
   <h1>Cosmetics producer: <strong>EPR in 4 countries in 6 weeks</strong></h1>
   <p class="lead">A brand selling through its own shop and Amazon in Poland, Germany, France and Czechia. Packaging data spread over a dozen spreadsheets, missing registrations and blocked listings. Here is how the implementation went, step by step.</p>
   <div class="cs-meta"><div><span>Industry</span><b>Natural cosmetics</b></div><div><span>Channels</span><b>Own shop, Amazon</b></div><div><span>Markets</span><b>PL · DE · FR · CZ</b></div><div><span>Implementation</span><b>6 weeks</b></div></div>
+  <figure class="cs-img wide"><img src="/img/cs-hero.jpg" alt="Natural cosmetics in glass bottles and paper packaging" loading="lazy"></figure>
 </div></section>
 <section class="s" style="padding-top:40px"><div class="wrap"><div class="cs-stats"><div class="cs-stat"><b>640</b><span>SKUs with a complete packaging card</span></div><div class="cs-stat"><b>4</b><span>countries with an active EPR registration</span></div><div class="cs-stat"><b>2 h</b><span>per quarterly report instead of 3 days</span></div><div class="cs-stat"><b>0</b><span>blocked listings on Amazon</span></div></div></div></section>
 <section class="s" style="padding-top:0"><div class="wrap cs-2">
-  <div><span class="label">challenge</span><h2>Plenty of sales, <strong>little order in the data</strong></h2><p>The company grew faster than its paperwork. EPR was handled by one person in purchasing who, once a quarter, pieced data together from invoices, supplier spreadsheets and emails.</p></div>
+  <div><span class="label">challenge</span><h2>Plenty of sales, <strong>little order in the data</strong></h2><p>The company grew faster than its paperwork. EPR was handled by one person in purchasing who, once a quarter, pieced data together from invoices, supplier spreadsheets and emails.</p><figure class="cs-img side"><img src="/img/cs-before.jpg" alt="A desk covered with spreadsheets, invoices and cosmetic samples" loading="lazy"></figure></div>
   <ul class="cs-list"><li>Packaging weights and materials for 640 SKUs spread over 14 spreadsheets, some only in supplier emails.</li><li>A German LUCID registration without a dual system contract for part of the volume.</li><li>No UIN in France, so Amazon.fr suspended 38 listings.</li><li>The Polish BDO report calculated by hand, with no check that weights matched declarations in other countries.</li><li>PPWR coming in August 2026 and nobody knew which packaging the new requirements affect.</li></ul>
 </div></section>
 <section class="s" style="padding-top:0"><div class="wrap">
@@ -798,6 +804,7 @@ details p{margin:0 0 20px;color:var(--muted);max-width:62em}
 </div></section>
 <section class="s" style="padding-top:0"><div class="wrap">
   <span class="label">results</span><h2 class="cs-h2">What changed <strong>after the implementation</strong></h2>
+  <figure class="cs-img wide"><img src="/img/cs-after.jpg" alt="A tidy cosmetics brand warehouse and a person with a tablet" loading="lazy"></figure>
   <div class="cs-res"><div><b>Reports without spreadsheets</b><p>The quarterly report for 4 countries takes about 2 hours. It used to take one person 3 working days.</p></div><div><b>Amazon without blocks</b><p>All 38 suspended Amazon.fr listings went back on sale once the UIN was added.</p></div><div><b>One packaging database</b><p>Every new product has a packaging card from day one, so data no longer drifts between countries.</p></div><div><b>Ready for PPWR</b><p>It is clear which packaging needs changes and declarations of conformity before August 2026.</p></div></div>
 </div></section>
 <section class="s" style="padding-top:0"><div class="wrap cs-q"><blockquote>We thought we just needed reporting software. It turned out the data had to be sorted out first, and we did that together with the EPRPilot team. Today the quarterly report is a formality.</blockquote><p>Head of purchasing, cosmetics producer (example)</p></div></section>
