@@ -782,6 +782,11 @@ details p{margin:0 0 20px;color:var(--muted);max-width:62em}
 .cs-img.wide{margin-top:40px;aspect-ratio:21/9}
 .cs-hero .cs-img.wide{max-width:1100px;margin-left:auto;margin-right:auto}
 .cs-img.side{margin-top:28px;aspect-ratio:4/3}
+.cs-more{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 18px;margin-top:16px;padding:22px 26px;border:1px solid var(--line);border-radius:18px;text-decoration:none;color:var(--fg);transition:border-color .2s}
+.cs-more:hover{border-color:rgba(168,212,43,.5)}
+.cs-more span{font:500 11.5px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+.cs-more b{grid-row:2;font-weight:500;font-size:18px}
+.cs-more svg{grid-row:1/3;grid-column:2;width:20px;height:20px;color:var(--lime)}
 .cs-disc{color:var(--dim);font-size:13.5px;margin-top:22px;text-align:center}
 .cs-img.wide{} @media(max-width:900px){.cs-img.wide{aspect-ratio:16/10;margin-top:28px}.cs-meta{grid-template-columns:1fr 1fr}.cs-meta div:nth-child(3){border-left:0}.cs-meta div:nth-child(n+3){border-top:1px solid var(--line)}
 .cs-stats{grid-template-columns:1fr 1fr;gap:12px}.cs-stat{padding:22px 18px}.cs-2{grid-template-columns:1fr;gap:24px}.cs-res{grid-template-columns:1fr}.cs-cta{padding:26px 22px}}
@@ -811,6 +816,7 @@ details p{margin:0 0 20px;color:var(--muted);max-width:62em}
 <section class="s" style="padding-top:0"><div class="wrap">
   <div class="cs-cta"><div><h3>Chcesz podobne wdrożenie u siebie?</h3><p>Zacznij od konsultacji. W 60 minut sprawdzimy, co już masz i czego brakuje.</p></div>
   <div class="ctas"><a class="btn btn-lime" href="/konsultacje">Umów konsultację <svg><use href="#i-arrow"/></svg></a><a class="btn btn-glass" href="/#cennik">Zobacz cennik</a></div></div>
+  <a class="cs-more" href="/case-study-tekstylia"><span>Zobacz też inne case study</span><b>Marka tekstyliów domowych: EPR opakowań i tekstyliów w 5 krajach</b><svg><use href="#i-arrow"/></svg></a>
   <p class="cs-disc">To przykładowe wdrożenie, oparte na typowym scenariuszu naszych klientów. Nazwa firmy, cytat i liczby są poglądowe.</p>
 </div></section>
 </main>
