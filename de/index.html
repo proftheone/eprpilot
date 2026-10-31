@@ -297,6 +297,7 @@ form.f{display:grid;gap:12px}
 .f input,.f textarea{font:400 15px var(--f-sans);color:var(--fg);background:var(--bg);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;width:100%}
 .f input:focus,.f textarea:focus{outline:none;border-color:var(--lime)}
 .f textarea{min-height:92px;resize:vertical}
+.f select{font:400 15px var(--f-sans);color:var(--fg);background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cpath d=%27M6 9l6 6 6-6%27 fill=%27none%27 stroke=%27%23888%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3C/svg%3E") no-repeat right 14px center/16px;border:1px solid var(--line-2);border-radius:12px;padding:12px 40px 12px 14px;width:100%;appearance:none;-webkit-appearance:none;cursor:pointer}.f select:focus{outline:none;border-color:var(--lime)}.f select:invalid{color:var(--dim)}.f select option{color:#111;background:#fff}.f .req{color:var(--lime)}
 .f .msg{font:500 13px var(--f-mono);color:var(--lime)}
 .f .fc{display:flex;gap:10px;align-items:flex-start;font:400 14px/1.5 var(--f-sans);letter-spacing:0;color:var(--muted);cursor:pointer}
 .f .fc input{width:18px;height:18px;flex:none;margin:2px 0 0;padding:0;accent-color:var(--lime)}
@@ -1208,10 +1209,15 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
       </div>
       <form class="f" id="form" novalidate>
         <div class="two">
-          <label for="fName">NAME<input id="fName" autocomplete="name"></label>
-          <label for="fMail">E-MAIL<input id="fMail" type="email" autocomplete="email"></label>
+          <label for="fName"><span>NAME <span class="req">*</span></span><input id="fName" autocomplete="name" required></label>
+          <label for="fMail"><span>E-MAIL <span class="req">*</span></span><input id="fMail" type="email" autocomplete="email" required></label>
         </div>
-        <label for="fMsg">WAS VERKAUFEN SIE UND WO?<textarea id="fMsg" placeholder="z. B. Kosmetik, Amazon DE und FR"></textarea></label>
+        <div class="two">
+          <label for="fTel"><span>TELEFONNUMMER <span class="req">*</span></span><input id="fTel" type="tel" autocomplete="tel" required></label>
+          <label for="fCo"><span>UNTERNEHMEN <span class="req">*</span></span><input id="fCo" autocomplete="organization" required></label>
+        </div>
+        <label for="fSrc"><span>WIE HABEN SIE UNS GEFUNDEN? <span class="req">*</span></span><select id="fSrc" required><option value="" disabled selected>Option wählen</option><option>Google</option><option>LinkedIn</option><option>Facebook</option><option>Empfehlung</option><option>Otoneso</option><option>Amazon oder anderer Marktplatz</option><option>Veranstaltung oder Konferenz</option><option>Sonstiges</option></select></label>
+        <label for="fMsg">KOMMENTAR<textarea id="fMsg" placeholder="Beschreiben Sie kurz Ihren EPR-Bedarf (optional)"></textarea></label>
         <label class="fc" for="fOk"><input type="checkbox" id="fOk" required><span>Ich akzeptiere die <a href="/regulamin" target="_blank">AGB</a> und habe die <a href="/polityka-prywatnosci" target="_blank">Datenschutzerklärung</a>.</span></label>
         <p class="fi">Verantwortlicher für Ihre Daten ist die EPRPILOT Sp. z o.o., ul. Kazimierza Pułaskiego 6/10, Radom, Polen. Wir verarbeiten die Formulardaten, um Ihre Nachricht zu beantworten und ein Angebot zu erstellen (Art. 6 Abs. 1 lit. b und f DSGVO). Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten sowie auf Widerspruch. Details in der <a href="/polityka-prywatnosci" target="_blank">Datenschutzerklärung</a>.</p>
         <button class="btn btn-lime" type="submit">Senden <svg><use href="#i-arrow"/></svg></button>
@@ -1393,12 +1399,13 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
   })});
   var form=document.getElementById('form'),msg=document.getElementById('formMsg');
   form.addEventListener('submit',function(e){e.preventDefault();msg.hidden=false;
-    if(!document.getElementById('fName').value.trim()||!/^\S+@\S+\.\S+$/.test(document.getElementById('fMail').value)){msg.style.color='var(--amber)';msg.textContent='Bitte geben Sie Ihren Namen und eine gültige E-Mail-Adresse ein.';return}
+    function v(i){return document.getElementById(i).value.trim()}
+    if(!v('fName')||!/^\S+@\S+\.\S+$/.test(v('fMail'))||v('fTel').replace(/\D/g,'').length<6||!v('fCo')||!v('fSrc')){msg.style.color='var(--amber)';msg.textContent='Bitte füllen Sie Name, E-Mail, Telefon, Unternehmen und Quelle aus.';return}
     if(!document.getElementById('fOk').checked){msg.style.color='var(--amber)';msg.textContent='Bitte akzeptieren Sie die AGB und die Datenschutzerklärung.';return}
     var W3F_KEY='d0178fda-c63f-4527-a2bb-f690d520852a';
     if(!W3F_KEY){msg.style.color='';msg.textContent='✓ Vorschau: Das Formular ist noch nicht verbunden.';return}
     var btn=form.querySelector('button[type=submit]');btn.disabled=true;msg.style.color='';msg.textContent='Wird gesendet…';
-    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:W3F_KEY,subject:'New enquiry from eprpilot.com (DE)',from_name:'EPRPilot',name:document.getElementById('fName').value.trim(),email:document.getElementById('fMail').value.trim(),replyto:document.getElementById('fMail').value.trim(),message:document.getElementById('fMsg').value.trim(),page:location.href,botcheck:form.querySelector('[name=botcheck]').checked})})
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:W3F_KEY,subject:'New enquiry from eprpilot.com (DE)',from_name:'EPRPilot',name:document.getElementById('fName').value.trim(),email:document.getElementById('fMail').value.trim(),replyto:document.getElementById('fMail').value.trim(),phone:v('fTel'),company:v('fCo'),source:v('fSrc'),message:'Telefon: '+v('fTel')+'\nUnternehmen: '+v('fCo')+'\nGefunden über: '+v('fSrc')+'\n\n'+v('fMsg'),page:location.href,botcheck:form.querySelector('[name=botcheck]').checked})})
       .then(function(r){return r.json()}).then(function(d){if(d.success){form.reset();msg.style.color='var(--lime)';msg.textContent='✓ Danke! Wir haben Ihre Nachricht erhalten und antworten innerhalb eines Werktags.'}else throw 0})
       .catch(function(){msg.style.color='var(--amber)';msg.textContent='Die Nachricht konnte nicht gesendet werden. Schreiben Sie an info@eprpilot.com.'}).then(function(){btn.disabled=false})});
 })();
