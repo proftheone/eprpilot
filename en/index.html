@@ -653,18 +653,67 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
 @media(max-width:760px){.rg-strip{grid-template-columns:1fr;gap:12px;padding:20px}.rg-soon{justify-self:start}}
 
 /* proces */
-.pr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:8px}
-.pr-c{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px 26px 30px;transition:border-color .2s,transform .2s}
-.pr-c:hover{border-color:rgba(168,212,43,.35);transform:translateY(-2px)}
-.pr-c:not(:last-child)::after{content:"";position:absolute;top:58px;right:-19px;width:20px;height:1px;background:linear-gradient(90deg,rgba(168,212,43,.6),rgba(168,212,43,0))}
-.pr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
-.pr-ic{width:52px;height:52px;border-radius:14px;background:var(--lime);color:#111;display:grid;place-items:center;box-shadow:0 0 30px -8px var(--lime-glow)}
-.pr-ic svg{width:24px;height:24px}
-.pr-n{font-size:44px;font-weight:700;letter-spacing:-.02em;color:rgba(168,212,43,.28);line-height:1}
-.pr-c h3{margin:0 0 10px;font-size:20px;font-weight:600;line-height:1.3;color:var(--fg)}
-.pr-c p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
-@media(max-width:1000px){.pr-grid{grid-template-columns:1fr 1fr}.pr-c::after{display:none}}
-@media(max-width:600px){.pr-grid{grid-template-columns:1fr;gap:12px}.pr-c{padding:22px 20px 24px}.pr-top{margin-bottom:18px}.pr-n{font-size:36px}}
+.flow{position:relative;margin-top:20px;display:grid;gap:34px}
+.flow::before{content:"";position:absolute;left:50%;top:30px;bottom:30px;width:2px;margin-left:-1px;background:linear-gradient(180deg,rgba(168,212,43,.05),rgba(168,212,43,.55) 15%,rgba(255,138,61,.5) 85%,rgba(255,138,61,.05))}
+.flow::after{content:"";position:absolute;left:50%;top:30px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--lime);box-shadow:0 0 18px var(--lime);animation:flowdot 7s linear infinite}
+@keyframes flowdot{from{top:30px;opacity:0}8%{opacity:1}92%{opacity:1}to{top:calc(100% - 40px);opacity:0}}
+.fl-row{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+.fl-row.rev .fl-tx{order:2}.fl-row.rev .fl-mock{order:1}
+.fl-dot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:52px;height:52px;border-radius:50%;background:var(--bg);border:1px solid rgba(168,212,43,.5);display:grid;place-items:center;box-shadow:0 0 0 6px var(--bg),0 0 30px -6px var(--lime-glow)}
+.fl-dot span{font:600 14px var(--f-mono);color:var(--lime)}
+.fl-ic{width:48px;height:48px;border-radius:14px;background:var(--lime);color:#111;display:grid;place-items:center;box-shadow:0 0 30px -8px var(--lime-glow);margin-bottom:18px}
+.fl-ic svg{width:22px;height:22px}
+.fl-k{display:block;font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.fl-tx h3{margin:0 0 12px;font-size:clamp(22px,2.3vw,28px);font-weight:600;line-height:1.25;color:var(--fg)}
+.fl-tx p{margin:0 0 18px;color:var(--muted);font-size:16px;line-height:1.65;max-width:34em}
+.fl-tx ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.fl-tx li{display:flex;gap:10px;color:#c9cecc;font-size:15px}
+.fl-tx li::before{content:"✓";flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(168,212,43,.14);color:var(--lime);font-size:11px;margin-top:2px}
+.fl-mock{background:linear-gradient(180deg,#232425,#1d1e1f);border:1px solid var(--line-2);border-radius:20px;padding:0 18px 18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7);font-size:13px}
+.fm-bar{display:flex;align-items:center;gap:6px;height:42px;border-bottom:1px solid var(--line);margin:0 -18px 16px;padding:0 16px}
+.fm-bar span{width:9px;height:9px;border-radius:50%;background:#3a3c3e}
+.fm-bar b{margin-left:10px;font:500 12px var(--f-mono);color:var(--muted);letter-spacing:.04em}
+.fm-drop{display:flex;align-items:center;gap:14px;border:1px dashed rgba(168,212,43,.4);border-radius:14px;padding:14px 16px;background:rgba(168,212,43,.04)}
+.fm-drop svg{width:22px;height:22px;color:var(--lime);flex:none}
+.fm-drop div{flex:1}.fm-drop b{display:block;color:var(--fg);font-weight:500}.fm-drop span{color:var(--dim);font-size:12px}
+.fl-mock i,.fl-mock em{font:500 11px var(--f-mono);font-style:normal;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.fl-mock .ok{color:var(--lime);background:rgba(168,212,43,.12)}.fl-mock .mid{color:#6fd6c6;background:rgba(111,214,198,.1)}.fl-mock .soon{color:var(--orange);background:rgba(255,138,61,.1)}.fl-mock .warn{color:var(--orange)}
+.fm-src{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.fm-src span{font:500 11px var(--f-mono);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.fm-tbl,.fm-map{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.fm-tbl>div,.fm-map>div{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:9px 14px;border-top:1px solid var(--line);color:#c9cecc}
+.fm-map>div{grid-template-columns:1.1fr 1.2fr auto;align-items:center}
+.fm-tbl>div:first-child,.fm-map>div:first-child{border-top:0}
+.fm-tbl .h,.fm-map .h{font:500 10.5px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim);background:rgba(255,255,255,.02)}
+.fm-tbl span:first-child,.fm-map span:first-child{font-family:var(--f-mono);font-size:12px}
+.fm-tbl .ok{background:none}
+.tag{font:500 10.5px var(--f-mono);padding:3px 9px;border-radius:999px;justify-self:start}
+.tag.l{color:var(--lime);background:rgba(168,212,43,.12)}.tag.t{color:#6fd6c6;background:rgba(111,214,198,.1)}.tag.o{color:var(--orange);background:rgba(255,138,61,.1)}
+.fm-flags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fm-flags span,.fm-flags b{font:500 11px var(--f-mono);color:var(--fg);background:var(--raise);border-radius:8px;padding:5px 9px}
+.fm-flags b{color:var(--lime);font-weight:500}
+.fm-cal .m{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.fm-cal .m b{color:var(--fg);font-weight:600;font-size:14px}.fm-cal .m span{color:var(--dim);font:500 11px var(--f-mono)}
+.fm-cal .row{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.fm-cal .d{width:38px;height:38px;border-radius:10px;background:var(--raise);color:var(--fg);display:grid;place-items:center;font:600 14px var(--f-mono);padding:0}
+.fm-cal .row div{flex:1}.fm-cal .row b{display:block;color:var(--fg);font-weight:500}.fm-cal .row span{color:var(--dim);font-size:12px}
+.fm-note{display:flex;align-items:center;gap:8px;margin-top:10px;padding:10px 12px;border-radius:10px;background:rgba(168,212,43,.06);color:var(--muted);font-size:12.5px}
+.fm-note svg{width:16px;height:16px;color:var(--lime)}
+.fm-rep>div{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.fm-rep>div:first-child{border-top:0;padding-top:0}
+.fm-rep .fl{width:34px;height:34px;border-radius:9px;background:var(--raise);display:grid;place-items:center;font:600 11.5px var(--f-mono);color:var(--fg);flex:none}
+.fm-rep>div>div{flex:1}.fm-rep b{display:block;color:var(--fg);font-weight:500}.fm-rep span{color:var(--dim);font-size:12px}
+.fm-dl{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font:500 12px var(--f-mono);color:var(--muted)}
+.fm-dl b{color:#111;background:var(--lime);border-radius:999px;padding:5px 12px;font-family:var(--f-sans);font-size:12px}
+@media(max-width:900px){
+  .flow{gap:44px;padding-left:34px}
+  .flow::before,.flow::after{left:12px}
+  .fl-row{grid-template-columns:1fr;gap:22px}
+  .fl-row.rev .fl-tx{order:0}.fl-row.rev .fl-mock{order:0}
+  .fl-dot{left:-22px;top:4px;transform:translateX(-50%);width:40px;height:40px;box-shadow:0 0 0 5px var(--bg)}
+  .fl-dot span{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.flow::after{animation:none;display:none}}
 </style>
 <style>.lang{font:500 12px var(--f-mono);letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 9px;text-decoration:none;transition:.2s}.lang:hover{color:var(--lime);border-color:rgba(168,212,43,.45)}</style>
 <link rel="alternate" hreflang="pl" href="https://eprpilot.com/"><link rel="alternate" hreflang="en" href="https://eprpilot.com/en/">
@@ -827,9 +876,49 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
     <div class="s-head">
       <span class="label">process</span>
       <h2>How <strong>EPRPilot works</strong></h2>
-      <p>From raw operational data to filed EPR reports, in four simple steps.</p>
+      <p>From raw operational data to filed EPR reports, in four steps. Each step checks what you do by hand in spreadsheets today.</p>
     </div>
-    <div class="pr-grid"><article class="pr-c"><div class="pr-top"><span class="pr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4"/><path d="m7 9 5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg></span><span class="pr-n">01</span></div><h3>Import operational data</h3><p>Upload sales, shipping and product data via CSV or a direct integration.</p></article><article class="pr-c"><div class="pr-top"><span class="pr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span><span class="pr-n">02</span></div><h3>Assign data to EPR categories</h3><p>Map products to national EPR streams and obligation types.</p></article><article class="pr-c"><div class="pr-top"><span class="pr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="m9 15 2 2 4-4"/></svg></span><span class="pr-n">03</span></div><h3>Track deadlines and schedules</h3><p>See every upcoming filing across all your markets in one place.</p></article><article class="pr-c"><div class="pr-top"><span class="pr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span><span class="pr-n">04</span></div><h3>Generate reports and manage filings</h3><p>Create reports ready to file in each country and archive them centrally.</p></article></div>
+    <div class="flow">
+    <div class="fl-row">
+      <div class="fl-dot"><span>01</span></div>
+      <div class="fl-tx"><span class="fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4"/><path d="m7 9 5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg></span><span class="fl-k">step 01</span><h3>Import operational data</h3><p>Upload sales, shipping and product data via CSV or a direct integration. EPRPilot recognises the columns and flags what is missing.</p><ul><li>Import from ERP, online shop, marketplaces, CSV or XLSX</li><li>Automatic column matching: SKU, country, quantity, weight</li><li>A list of gaps to fill instead of errors in the report</li></ul></div>
+      <div class="fl-mock" aria-hidden="true"><div class="fm-bar"><span></span><span></span><span></span><b>Data import</b></div>
+<div class="fm-drop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4"/><path d="m7 9 5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg><div><b>sales_Q3_2026.csv</b><span>12,480 rows · 4 countries</span></div><i class="ok">loaded</i></div>
+<div class="fm-src"><span>ERP</span><span>Online shop</span><span>Marketplace</span><span>CSV / XLSX</span></div>
+<div class="fm-tbl"><div class="h"><span>File column</span><span>EPRPilot field</span></div>
+<div><span>product_id</span><span class="ok">SKU ✓</span></div><div><span>ship_country</span><span class="ok">Country ✓</span></div><div><span>qty</span><span class="ok">Quantity ✓</span></div><div><span>pack_weight_g</span><span class="warn">Weight · 38 missing</span></div></div></div>
+    </div>
+<div class="fl-row rev">
+      <div class="fl-dot"><span>02</span></div>
+      <div class="fl-tx"><span class="fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span><span class="fl-k">step 02</span><h3>Assign data to EPR categories</h3><p>Map products to national EPR streams and obligation types. A material and category assigned once works in every country.</p><ul><li>Packaging, WEEE and batteries in one view</li><li>Material and weight per SKU and variant</li><li>Category suggestions based on each country’s rules</li></ul></div>
+      <div class="fl-mock" aria-hidden="true"><div class="fm-bar"><span></span><span></span><span></span><b>Category mapping</b></div>
+<div class="fm-map"><div class="h"><span>SKU</span><span>Material</span><span>Stream</span></div>
+<div><span>KR-50-AMB</span><span>Glass · 182 g</span><span class="tag l">Packaging</span></div>
+<div><span>KR-50-AMB</span><span>Paper · 24 g</span><span class="tag l">Packaging</span></div>
+<div><span>LMP-USB-2</span><span>Device · 340 g</span><span class="tag t">WEEE</span></div>
+<div><span>LMP-USB-2</span><span>Li-ion · 48 g</span><span class="tag o">Batteries</span></div></div>
+<div class="fm-flags"><span>PL</span><span>DE</span><span>FR</span><span>CZ</span><span>IT</span><span>ES</span><b>+23</b></div></div>
+    </div>
+<div class="fl-row">
+      <div class="fl-dot"><span>03</span></div>
+      <div class="fl-tx"><span class="fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="m9 15 2 2 4-4"/></svg></span><span class="fl-k">step 03</span><h3>Track deadlines and schedules</h3><p>See every upcoming filing across all your markets. Reminders arrive before a deadline becomes a problem.</p><ul><li>A reporting calendar for every country</li><li>Email reminders before each deadline</li><li>Status of every registration and EPR number</li></ul></div>
+      <div class="fl-mock" aria-hidden="true"><div class="fm-bar"><span></span><span></span><span></span><b>Deadlines</b></div>
+<div class="fm-cal"><div class="m"><b>November 2026</b><span>3 filings</span></div>
+<div class="row"><i class="d">10</i><div><b>DE · dual system report</b><span>Packaging · quarterly</span></div><em class="soon">in 10 days</em></div>
+<div class="row"><i class="d">15</i><div><b>FR · Citeo declaration</b><span>Packaging · annual</span></div><em class="mid">in 15 days</em></div>
+<div class="row"><i class="d">30</i><div><b>CZ · EKO-KOM report</b><span>Packaging · quarterly</span></div><em class="ok">ready</em></div></div>
+<div class="fm-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="m9 15 2 2 4-4"/></svg>We send a reminder 7 days before each deadline</div></div>
+    </div>
+<div class="fl-row rev">
+      <div class="fl-dot"><span>04</span></div>
+      <div class="fl-tx"><span class="fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span><span class="fl-k">step 04</span><h3>Generate reports and manage filings</h3><p>Create reports ready to file in each country and archive them centrally. Every figure can be traced back to its source.</p><ul><li>Reports in the format each country requires</li><li>Filings and confirmations archived in one place</li><li>A full data trail in case of an audit</li></ul></div>
+      <div class="fl-mock" aria-hidden="true"><div class="fm-bar"><span></span><span></span><span></span><b>Reports and filings</b></div>
+<div class="fm-rep"><div><span class="fl">DE</span><div><b>Packaging · Q3 2026</b><span>4,812 kg · 6 materials</span></div><em class="ok">filed</em></div>
+<div><span class="fl">FR</span><div><b>Packaging · 2026</b><span>2,130 kg · UIN active</span></div><em class="mid">ready to file</em></div>
+<div><span class="fl">PL</span><div><b>BDO · annual report</b><span>9,455 kg · 4 streams</span></div><em class="soon">in progress</em></div></div>
+<div class="fm-dl"><span>report_DE_Q3_2026.xlsx</span><b>Download</b></div></div>
+    </div>
+    </div>
   </div>
 </section>
 
