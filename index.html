@@ -657,7 +657,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
 .flow::before{content:"";position:absolute;left:50%;top:30px;bottom:30px;width:2px;margin-left:-1px;background:linear-gradient(180deg,rgba(168,212,43,.05),rgba(168,212,43,.55) 15%,rgba(255,138,61,.5) 85%,rgba(255,138,61,.05))}
 .flow::after{content:"";position:absolute;left:50%;top:30px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--lime);box-shadow:0 0 18px var(--lime);animation:flowdot 7s linear infinite}
 @keyframes flowdot{from{top:30px;opacity:0}8%{opacity:1}92%{opacity:1}to{top:calc(100% - 40px);opacity:0}}
-.fl-row{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+.fl-row{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:150px;align-items:center}
 .fl-row.rev .fl-tx{order:2}.fl-row.rev .fl-mock{order:1}
 .fl-dot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:52px;height:52px;border-radius:50%;background:var(--bg);border:1px solid rgba(168,212,43,.5);display:grid;place-items:center;box-shadow:0 0 0 6px var(--bg),0 0 30px -6px var(--lime-glow)}
 .fl-dot span{font:600 14px var(--f-mono);color:var(--lime)}
@@ -714,6 +714,17 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
   .fl-dot span{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.flow::after{animation:none;display:none}}
+.fl-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
+.fl-svg .b{fill:none;stroke:rgba(168,212,43,.45);stroke-width:2;stroke-linecap:round}
+.fl-svg .v{fill:none;stroke:url(#flg);stroke-width:2;stroke-linecap:round}
+.fl-svg .p{fill:none;stroke:var(--lime);stroke-width:3;stroke-linecap:round;stroke-dasharray:14 400;animation:flp 3.2s linear infinite;filter:drop-shadow(0 0 4px rgba(168,212,43,.8))}
+.fl-svg .p.d2{animation-delay:1.6s}
+.fl-svg circle{fill:#a8d42b}
+@keyframes flp{from{stroke-dashoffset:414}to{stroke-dashoffset:0}}
+.flow.js::before,.flow.js::after{display:none}
+@media(max-width:900px){.fl-svg{display:none}.flow.js::before,.flow.js::after{display:block}}
+@media(prefers-reduced-motion:reduce){.fl-svg .p{display:none}}
+
 </style>
 <style>.lang{font:500 12px var(--f-mono);letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 9px;text-decoration:none;transition:.2s}.lang:hover{color:var(--lime);border-color:rgba(168,212,43,.45)}</style>
 <link rel="alternate" hreflang="pl" href="https://eprpilot.com/"><link rel="alternate" hreflang="en" href="https://eprpilot.com/en/">
@@ -1389,6 +1400,21 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
   sel.addEventListener('change',calc);
   ['cPkg','cWeee','cBat','cPpwr'].forEach(function(id){document.getElementById(id).addEventListener('change',calc)});calc();
 
+
+  /* ---------- przepływ: rozgałęzione linie ---------- */
+  (function(){var fl=document.querySelector('.flow');if(!fl)return;var NS='http://www.w3.org/2000/svg';
+    var svg=document.createElementNS(NS,'svg');svg.setAttribute('class','fl-svg');svg.setAttribute('aria-hidden','true');fl.insertBefore(svg,fl.firstChild);fl.classList.add('js');
+    function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
+    function draw(){svg.innerHTML='<defs><linearGradient id="flg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8d42b" stop-opacity=".6"/><stop offset="1" stop-color="#ff8a3d" stop-opacity=".55"/></linearGradient></defs>';
+      if(innerWidth<=900)return;var fr=fl.getBoundingClientRect(),rows=fl.querySelectorAll('.fl-row'),pts=[];
+      rows.forEach(function(r){var d=r.querySelector('.fl-dot').getBoundingClientRect(),cx=d.left+d.width/2-fr.left,cy=d.top+d.height/2-fr.top,R=d.width/2;pts.push([cx,cy,R]);
+        [r.querySelector('.fl-tx'),r.querySelector('.fl-mock')].forEach(function(b,i){var bb=b.getBoundingClientRect(),left=bb.left-fr.left<cx;
+          var ex=left?bb.right-fr.left+10:bb.left-fr.left-10,tg=i?b.querySelector('.fm-bar'):b.querySelector('h3'),tb=tg.getBoundingClientRect(),ey=tb.top+tb.height/2-fr.top,sx=cx+(left?-R:R),sy=cy;
+          var mx=(sx+ex)/2,dpath='M'+sx+' '+sy+' C'+mx+' '+sy+' '+mx+' '+ey+' '+ex+' '+ey;
+          el('path',{d:dpath,'class':'b'});el('path',{d:dpath,'class':'p'+(i?' d2':'')});el('circle',{cx:ex,cy:ey,r:5})})});
+      for(var i=0;i<pts.length-1;i++){var a=pts[i],b=pts[i+1],y1=a[1]+a[2],y2=b[1]-b[2],sw=(i%2?1:-1)*70,dv='M'+a[0]+' '+y1+' C'+(a[0]+sw)+' '+(y1+(y2-y1)*.35)+' '+(b[0]-sw)+' '+(y1+(y2-y1)*.65)+' '+b[0]+' '+y2;
+        el('path',{d:dv,'class':'v'});el('path',{d:dv,'class':'p'})}}
+    draw();addEventListener('resize',draw);addEventListener('load',draw);if(document.fonts)document.fonts.ready.then(draw);setTimeout(draw,1200)})();
   /* ---------- kopiuj + formularz ---------- */
   document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){
     function s(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var x=getSelection();x.removeAllRanges();x.addRange(r)}
