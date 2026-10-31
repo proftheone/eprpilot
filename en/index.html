@@ -653,6 +653,20 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
 .rg-go{display:inline-flex;align-items:center;gap:8px;color:var(--lime);font-weight:500;font-size:15px;white-space:nowrap}
 .rg-go svg{width:16px;height:16px}
 @media(max-width:760px){.rg-strip{grid-template-columns:1fr;gap:12px;padding:20px}.rg-soon{justify-self:start}}
+
+/* proces */
+.pr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:8px}
+.pr-c{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px 26px 30px;transition:border-color .2s,transform .2s}
+.pr-c:hover{border-color:rgba(168,212,43,.35);transform:translateY(-2px)}
+.pr-c:not(:last-child)::after{content:"";position:absolute;top:58px;right:-19px;width:20px;height:1px;background:linear-gradient(90deg,rgba(168,212,43,.6),rgba(168,212,43,0))}
+.pr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.pr-ic{width:52px;height:52px;border-radius:14px;background:var(--lime);color:#111;display:grid;place-items:center;box-shadow:0 0 30px -8px var(--lime-glow)}
+.pr-ic svg{width:24px;height:24px}
+.pr-n{font-size:44px;font-weight:700;letter-spacing:-.02em;color:rgba(168,212,43,.28);line-height:1}
+.pr-c h3{margin:0 0 10px;font-size:20px;font-weight:600;line-height:1.3;color:var(--fg)}
+.pr-c p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+@media(max-width:1000px){.pr-grid{grid-template-columns:1fr 1fr}.pr-c::after{display:none}}
+@media(max-width:600px){.pr-grid{grid-template-columns:1fr;gap:12px}.pr-c{padding:22px 20px 24px}.pr-top{margin-bottom:18px}.pr-n{font-size:36px}}
 </style>
 <style>.lang{font:500 12px var(--f-mono);letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 9px;text-decoration:none;transition:.2s}.lang:hover{color:var(--lime);border-color:rgba(168,212,43,.45)}</style>
 <link rel="alternate" hreflang="pl" href="https://eprpilot.com/"><link rel="alternate" hreflang="en" href="https://eprpilot.com/en/">
@@ -807,6 +821,17 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;marg
       <div class="stat"><b>1</b><span>dashboard instead of spreadsheets and portals</span></div>
       <div class="stat"><b>0 €</b><span>to start, demo account right away</span></div>
     </div>
+  </div>
+</section>
+
+<section class="s" id="proces" style="padding-top:0">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="label">process</span>
+      <h2>How <strong>EPRPilot works</strong></h2>
+      <p>From raw operational data to filed EPR reports, in four simple steps.</p>
+    </div>
+    <div class="pr-grid"><article class="pr-c"><div class="pr-top"><span class="pr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4"/><path d="m7 9 5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg></span><span class="pr-n">01</span></div><h3>Import operational data</h3><p>Upload sales, shipping and product data via CSV or a direct integration.</p></article><article class="pr-c"><div class="pr-top"><span class="pr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span><span class="pr-n">02</span></div><h3>Assign data to EPR categories</h3><p>Map products to national EPR streams and obligation types.</p></article><article class="pr-c"><div class="pr-top"><span class="pr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="m9 15 2 2 4-4"/></svg></span><span class="pr-n">03</span></div><h3>Track deadlines and schedules</h3><p>See every upcoming filing across all your markets in one place.</p></article><article class="pr-c"><div class="pr-top"><span class="pr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span><span class="pr-n">04</span></div><h3>Generate reports and manage filings</h3><p>Create reports ready to file in each country and archive them centrally.</p></article></div>
   </div>
 </section>
 
